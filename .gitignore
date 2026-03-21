@@ -1,0 +1,54 @@
+# -----------------------------------------------
+# BrooklineForward — .gitignore
+# -----------------------------------------------
+# Files in _private/ are NEVER committed or published.
+# Use this folder for raw working notes, draft analysis,
+# personal contacts, and anything not ready for public view.
+# -----------------------------------------------
+
+# Private working folder (never published)
+_private/
+
+# macOS metadata
+.DS_Store
+**/.DS_Store
+.AppleDouble
+.LSOverride
+
+# Thumbnails
+._*
+
+# macOS directory preferences
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Windows junk
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Environment / secrets
+.env
+.env.local
+
+# Node (if we ever add any tooling)
+node_modules/
+npm-debug.log*
+
+# Temp / build files
+*.tmp
+*.log
+dist/
+.cache/
