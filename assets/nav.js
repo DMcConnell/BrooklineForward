@@ -10,8 +10,8 @@
     <li><a href="understanding.html">The Challenge</a></li>
     <li><a href="proposal.html">The Proposal</a></li>
     <li><a href="research.html">Research</a></li>
-    <li><a href="index.html#involved">Get Involved</a></li>
-    <li><a href="https://github.com/dmcconnell/BrooklineForward" target="_blank" rel="noopener">GitHub ↗</a></li>
+    <li><a href="budget.html">Budget Explorer</a></li>
+<li><a href="https://github.com/dmcconnell/BrooklineForward" target="_blank" rel="noopener">GitHub ↗</a></li>
   </ul>
 </nav>`;
 

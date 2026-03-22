@@ -1,0 +1,179 @@
+{
+  "meta": {
+    "sources": [
+      "FY2025 Financial Plan (Town of Brookline)",
+      "FY2026-FY2030 Long Range Financial Plan (December 2024)",
+      "Article 9 - FY2026 Budget (Advisory Committee, May 2025)"
+    ],
+    "lastUpdated": "2026-03-21",
+    "notes": "FY2021-FY2024 are actuals; FY2025 is adopted budget; FY2026 is adopted budget (Article 9); FY2027-FY2030 are projections from LRFP."
+  },
+
+  "fiscalYears": ["FY2021","FY2022","FY2023","FY2024","FY2025","FY2026","FY2027","FY2028","FY2029","FY2030"],
+
+  "totalRevenue": [317946555, 345295834, 360755853, 376389166, 399885456, 416365710, 421174235, 432616004, 444732881, 454845043],
+  "totalExpenditures": [null, null, null, null, 399885457, 423769053, 436352472, 455479254, 476441289, 486552266],
+
+  "revenueBySource": {
+    "Property Tax":       [235719007, 272124863, 281379273, 297973161, 312575807, 332119800, 348570398, 359124846, 370001429, 380409368],
+    "Local Receipts":     [24363433, 36614449, 40230923, 30028757, 33050910, 34395693, 34718684, 35263658, 35630642, 36004779],
+    "State Aid":          [22408358, 22825559, 23230992, 23970474, 24806774, 24806774, 25417237, 26042961, 26684328, 27341730],
+    "Free Cash":          [11065720, 10401890, 11606813, 20008705, 22422386, 20800000, 8000000, 7500000, 7500000, 5926815],
+    "Other Available":    [4390037, 3329073, 4307848, 4407669, 7029580, 4243443, 4467916, 4684540, 4916481, 5162351]
+  },
+
+  "expendituresByCategory": {
+    "School Department":    [120748988, 119870476, 121600027, 130702376, 136847619, 145692000, 152125373, 158870258, 165756522, 172642786],
+    "Municipal Departments":[78771592, 79181265, 82298413, 90741568, 95108187, 98121124, 100729556, 103389767, 106092484, 108838018],
+    "Benefits":             [null, null, null, null, 88508319, 92123822, 100307692, 108774874, 118272910, 119384293],
+    "Debt Service":         [null, null, null, null, 36917484, 44050783, 50025678, 52354885, 53928574, 53884094],
+    "Special Appropriations (CIP)":[8862250, 7617048, 8727048, 18781566, 22440786, 25901039, 15824253, 14340339, 14177954, 13118743],
+    "Non-Appropriated":     [null, null, null, null, 10366377, 10613732, 10867272, 11127150, 11393525, 11666559]
+  },
+
+  "cumulativeDeficit": {
+    "years": ["FY2025","FY2026","FY2027","FY2028","FY2029","FY2030"],
+    "total": [0, -7403343, -15178238, -22863250, -31708408, -31707223],
+    "town":  [0, -1338805, -4670674, -7611511, -11010012, -10945165],
+    "school":[0, -6064538, -10507564, -15251740, -20698396, -20762058]
+  },
+
+  "benefitsDetail": {
+    "years": ["FY2025","FY2026","FY2027","FY2028","FY2029","FY2030"],
+    "Pensions":       [37488687, 38277350, 41424489, 44597215, 48354017, 44630321],
+    "Group Health":   [38033210, 42438956, 46688896, 51429875, 56599889, 60844881],
+    "Retiree Health (OPEB)": [5431980, 5181980, 5431980, 5681980, 5931980, 6181980],
+    "Medicare":       [3169818, 3382196, 3608803, 3850593, 4108582, 4383857],
+    "Workers Comp":   [2200000, 2255000, 2311375, 2369159, 2428388, 2489098],
+    "Other Benefits": [2184624, 588340, 842149, 846052, 850054, 854156]
+  },
+
+  "departmentSpending": {
+    "years": ["FY2021","FY2022","FY2023","FY2024","FY2025","FY2026"],
+    "Police":       [17386626, 17493030, 17442761, 19560590, 19167445, 21040066],
+    "Fire":         [15951670, 16481472, 17541954, 18854944, 19144688, 19240336],
+    "Public Works": [16008198, 16668234, 16608450, 18355326, 18813556, 20565454],
+    "Building":     [8831246, 9587404, 10649313, 11196910, 12261034, 12334359],
+    "Schools":      [120748990, 119870476, 121600027, 130702376, 136847619, 142310953]
+  },
+
+  "propertyTaxDetail": {
+    "years": ["FY2025","FY2026","FY2027","FY2028","FY2029","FY2030"],
+    "levyLimit":     [290563315, 302939540, 312613029, 322528354, 332691563, 343108852],
+    "debtExclusion": [22012492, 29180259, 35957369, 36596491, 37309866, 37300516],
+    "newGrowth":     [3178133, 2500000, 2100000, 2100000, 2100000, 2100000]
+  },
+
+  "revenueVsExpGrowth": {
+    "years": ["FY2026","FY2027","FY2028","FY2029","FY2030"],
+    "revenuePctChange": [4.1, 1.2, 2.7, 2.8, 2.3],
+    "expenditurePctChange": [6.0, 3.0, 4.4, 4.6, 2.1]
+  },
+
+  "localReceiptsHistory": {
+    "years": ["FY2007","FY2008","FY2009","FY2010","FY2011","FY2012","FY2013","FY2014","FY2015","FY2016","FY2017","FY2018","FY2019","FY2020","FY2021","FY2022","FY2023","FY2024","FY2025","FY2026"],
+    "total": [23280000, 24520000, 22460000, 21040000, 22610000, 23880000, 24480000, 25520000, 25850000, 29380000, 28650000, 36280000, 35730000, 37230000, 30480000, 36610000, 43010000, 44583509, 33050910, 34890000]
+  },
+
+  "functionalAllocation": {
+    "Education": 59.2,
+    "Non-School Benefits": 14.0,
+    "Public Safety": 11.8,
+    "Public Works": 4.8,
+    "General Government": 2.8,
+    "Non-School Debt": 2.3,
+    "Reserves": 1.8,
+    "Cultural Resources": 1.5,
+    "Human Services": 1.0,
+    "Collective Bargaining": 0.7
+  },
+
+  "salaryStepEscalator": {
+    "note": "Nominal COLA is 2.75% but step increases push actual raises to 5-8%. Source: ERSC Report p.64",
+    "positions": [
+      "Step 1→2, Bachelor's",
+      "Step 4→5, Bachelor's",
+      "Step 1→2, Master's",
+      "Step 6→7, Master's",
+      "Step 10→11, Master's",
+      "Step 14→15, Master's",
+      "Step 1→2, Doctorate",
+      "Step 10→11, Doctorate",
+      "Step 14→15, Doctorate"
+    ],
+    "fy25Salary": [60514, 69786, 67437, 83388, 96150, 109504, 75277, 105934, 119558],
+    "fy26Salary": [65358, 74885, 72569, 88957, 102066, 115638, 80848, 112350, 125886],
+    "actualPctIncrease": [8.0, 7.3, 7.6, 6.7, 6.2, 5.6, 7.4, 6.1, 5.3],
+    "nominalCOLA": 2.75,
+    "areaInflation": 3.2
+  },
+
+  "enrollment": {
+    "note": "Source: ERSC Report p.89, Cropper-McKibben forecast. Actuals through SY24-25, projections after.",
+    "years": ["SY19-20","SY20-21","SY21-22","SY22-23","SY23-24","SY24-25","SY25-26","SY26-27","SY27-28","SY28-29","SY29-30","SY30-31","SY31-32","SY32-33","SY33-34"],
+    "totalPreK12": [7762, 6864, 6904, 7039, 7021, 6980, 6929, 6917, 6886, 6933, 7050, 7118, 7245, 7344, 7444],
+    "k8": [5446, 4703, 4586, 4716, 4610, 4581, 4611, 4588, 4635, 4659, 4684, 4733, 4827, 4955, 5075],
+    "grades912": [2064, 2017, 2063, 2066, 2155, 2143, 2062, 2073, 1995, 2018, 2110, 2129, 2162, 2133, 2113]
+  },
+
+  "costPerStudent": {
+    "note": "School budget divided by total enrollment. Shows rising cost per pupil even as enrollment falls.",
+    "years": ["SY19-20","SY20-21","SY21-22","SY22-23","SY23-24","SY24-25","SY25-26"],
+    "schoolBudget": [120748988, 120748988, 119870476, 121600027, 130702376, 136847619, 142310953],
+    "enrollment":   [7762, 6864, 6904, 7039, 7021, 6980, 6929],
+    "costPerStudent": [15557, 17592, 17363, 17275, 18616, 19606, 20539]
+  },
+
+  "fteChanges": {
+    "note": "Source: ERSC Report p.108. FY2019 vs FY2026 staffing comparison.",
+    "departments": ["Health","Select Board","Public Works","Library","Council on Aging","Building","Human Resources","Fire","DEICR","IT","Planning","Town Clerk","Recreation","Finance","Police"],
+    "fy2019FTE": [18.04, 6.48, 130.38, 52.84, 16.91, 36.61, 5.78, 160.00, 2.72, 12.40, 18.49, 5.50, 12.00, 31.22, 180.80],
+    "fy2026FTE": [26.28, 10.00, 133.91, 56.22, 19.09, 38.61, 7.78, 161.00, 3.72, 13.00, 19.00, 5.50, 11.00, 29.42, 173.30],
+    "change": [8.24, 3.52, 3.53, 3.38, 2.18, 2.00, 2.00, 1.00, 1.00, 0.60, 0.51, 0.00, -1.00, -1.80, -7.50],
+    "totalSalaryFY19": 53218117,
+    "totalSalaryFY26": 66317226
+  },
+
+  "debtServiceGrowth": {
+    "note": "Debt service has grown at 20.1% annually FY2019-FY2026 due to school construction. Source: ERSC Report p.107",
+    "years": ["FY2019","FY2020","FY2021","FY2022","FY2023","FY2024","FY2025","FY2026","FY2027","FY2028","FY2029","FY2030"],
+    "debtService": [16900000, null, null, null, null, null, 36917484, 44050783, 50025678, 52354885, 53928574, 53884094]
+  },
+
+  "spedNonResident": {
+    "note": "Source: ERSC Report p.68-72. Non-resident students cost Brookline ~$4M in unreimbursed SpEd.",
+    "totalStudents": 6870,
+    "residentStudents": 6380,
+    "materialsFeestudents": 191,
+    "metcoStudents": 299,
+    "residentSpedRate": 15.9,
+    "materialsFeeSpedRate": 20.9,
+    "metcoSpedRate": 34.8,
+    "costPerSpedStudent": 30130,
+    "unreimbursedMaterialsFee": 1118880,
+    "unreimbursedMETCO": 2909088,
+    "totalUnreimbursed": 4027968,
+    "metcoGrant": 2400000,
+    "metcoPerStudentFunding": 6670,
+    "stateAveragePerStudent": 8026
+  },
+
+  "beepCostGap": {
+    "note": "BEEP charges only 63% of true cost. Source: ERSC Report p.79-87",
+    "years": ["FY2026","FY2027","FY2028"],
+    "tuitionCharged": [16740, 18079, 19526],
+    "breakEvenCost": [26642, 29506, 30981],
+    "trueCostPerStudent": 42832,
+    "totalProgramCost": 10836514,
+    "totalFTE": 101.4,
+    "enrollment": 253
+  },
+
+  "budgetGrowthDrivers": {
+    "note": "What's driving the budget increase FY2019 to FY2026. Source: ERSC Report p.107",
+    "categories": ["Salaries + Overtime", "Debt Service", "Group Insurance (GIC)", "Pensions"],
+    "fy2019": [53200000, 16900000, 30000000, 23100000],
+    "fy2026": [66900000, 44100000, 42300000, 38100000],
+    "annualGrowthPct": [3.2, 20.1, 5.1, 8.1]
+  }
+}
