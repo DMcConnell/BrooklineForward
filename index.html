@@ -1,343 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BrooklineForward — Citizens Working for a Sustainable Brookline</title>
-  <meta name="description" content="A group of Brookline residents researching how our town can build a more financially sustainable future — openly, transparently, and with your input welcome." />
-  <meta property="og:title" content="BrooklineForward — Citizens Working for a Sustainable Brookline" />
-  <meta property="og:description" content="We love Brookline. We're doing open research into how it builds a financially sustainable future — and we'd love your input." />
-  <meta property="og:url" content="https://dmcconnell.github.io/BrooklineForward" />
-  <meta property="og:type" content="website" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="BrooklineForward" />
-  <meta name="twitter:description" content="Open citizen research into how Brookline builds a financially sustainable future. Come be part of it." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/styles.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BrooklineForward</title>
+  <meta name="description" content="Brookline's public budget data and town documents, made easier to explore.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body>
 
 <div id="bf-nav"></div>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-inner">
-    <p class="hero-eyebrow">An open citizen research project — Brookline, MA</p>
-    <h1>
-      We love Brookline.<br />
-      We're working to help it<br />
-      <span class="hashtag">thrive for the long term.</span>
-    </h1>
-    <p class="hero-sub">
-      A group of Brookline residents researching how our town builds
-      a more financially sustainable future — openly, transparently,
-      and with every finding published for anyone to read, challenge, or build on.
-      We'd love your input.
+<div class="page-wrap">
+  <div class="landing-intro">
+    <h1>Brookline's public data, easier to explore</h1>
+    <p>
+      Brookline publishes a lot of great information about its budget, finances,
+      and planning. This site pulls it together in one place with interactive
+      charts and plain-language summaries so it's easier to dig into and discuss.
     </p>
-    <div class="hero-buttons">
-      <a href="proposal.html" class="btn btn-primary">See our research ↓</a>
-      <a href="https://github.com/dmcconnell/BrooklineForward" target="_blank" rel="noopener" class="btn btn-secondary">View on GitHub ↗</a>
-    </div>
   </div>
-</section>
 
-<!-- STATS BAR -->
-<div class="stats-bar">
-  <div class="stats-inner">
-    <div>
-      <div class="stat-num">162</div>
-      <div class="stat-label">pages of official<br />analysis reviewed</div>
-    </div>
-    <div>
-      <div class="stat-num">3</div>
-      <div class="stat-label">reform tracks<br />under active research</div>
-    </div>
-    <div>
-      <div class="stat-num">50+</div>
-      <div class="stat-label">open research tasks<br />tracked publicly</div>
-    </div>
-    <div>
-      <div class="stat-num">100%</div>
-      <div class="stat-label">open — every finding<br />published as we go</div>
-    </div>
+  <div class="landing-cards">
+    <a href="budget.html" class="landing-card">
+      <div class="landing-card-icon">📊</div>
+      <h2>Budget Explorer</h2>
+      <p>Interactive charts built from the town's published financial data. See where revenue comes from, where it goes, and how both are changing over time.</p>
+      <span class="card-link">Explore the budget →</span>
+    </a>
+    <a href="documents.html" class="landing-card">
+      <div class="landing-card-icon">📄</div>
+      <h2>Document Library</h2>
+      <p>Key town documents with plain-language summaries. Budget reports, committee findings, financial plans, all linked back to official sources.</p>
+      <span class="card-link">Browse documents →</span>
+    </a>
   </div>
 </div>
 
-<!-- CHALLENGE -->
-<section class="problem" id="challenge">
-  <div class="section-inner">
-    <div class="problem-grid">
-      <div>
-        <p class="section-eyebrow">Understanding the Challenge</p>
-        <h2 class="section-title">Brookline's finances face<br />a real structural challenge.</h2>
-        <div class="section-body">
-          <p>
-            Brookline's property taxes — 79% of all operating revenue — grow
-            at around 3% per year under Proposition 2½, Massachusetts' 1980
-            tax limitation law. Meanwhile, healthcare premiums, wages, debt
-            service from school construction, and special education costs tend
-            to grow faster — often 5–8% annually.
-          </p>
-          <p>
-            Over time, that gap compounds. The town's own
-            <a href="https://brookline.news/wp-content/uploads/2026/03/ERSC-Final-Report-FINAL-031326-1.pdf" target="_blank" rel="noopener">Expenditures &amp; Revenues Study Committee</a>
-            — a year-long, rigorous, independent review — published its
-            findings in March 2026 and did serious, honest work identifying
-            this dynamic and what's driving it.
-          </p>
-          <p>
-            BrooklineForward builds on that foundation. We're researching
-            the long-term structural levers the town has available — on the
-            revenue side, the legislative side, and in how it manages major
-            upcoming financial transitions.
-          </p>
-          <p style="margin-top: 24px;">
-            <a href="understanding.html" class="btn btn-outline" style="display:inline-flex;">Read the full briefing →</a>
-          </p>
-        </div>
-      </div>
-      <div class="override-timeline">
-        <p class="timeline-title">Property tax overrides over time — context for the challenge</p>
-        <div class="override-item">
-          <div class="override-year">2008</div>
-          <div class="override-bar-wrap"><div class="override-bar"><span>$4.8M</span></div></div>
-        </div>
-        <div class="override-item">
-          <div class="override-year">2015</div>
-          <div class="override-bar-wrap"><div class="override-bar"><span>$7.1M</span></div></div>
-        </div>
-        <div class="override-item">
-          <div class="override-year">2019</div>
-          <div class="override-bar-wrap"><div class="override-bar"><span>$10.3M</span></div></div>
-        </div>
-        <div class="override-item">
-          <div class="override-year">2022</div>
-          <div class="override-bar-wrap"><div class="override-bar"><span>$14.2M</span></div></div>
-        </div>
-        <div class="override-item">
-          <div class="override-year">2026?</div>
-          <div class="override-bar-wrap"><div class="override-bar"><span>$18–23M proposed</span></div></div>
-        </div>
-        <p class="next-override">* 2026 figures are the E&amp;RSC's three-tier proposal range. Source: <a href="https://brookline.news/wp-content/uploads/2026/03/ERSC-Final-Report-FINAL-031326-1.pdf" target="_blank" rel="noopener" style="color:inherit;">E&amp;RSC Final Report, March 2026</a>.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- BRANCHES -->
-<section class="branches" id="proposal">
-  <div class="section-inner">
-    <p class="section-eyebrow">Three Areas We're Exploring</p>
-    <h2 class="section-title">Our research is organized<br />around three connected tracks.</h2>
-    <p class="section-body">
-      The E&amp;RSC's report is an excellent foundation. It also noted areas it didn't have time to fully
-      explore — economic development, state legislative options, and the major financial transition coming
-      in 2030. Those are the areas we're digging into. Nothing here is settled — this is active research
-      and we welcome pushback.
-    </p>
-    <div class="branches-grid">
-
-      <a href="branch-1.html" class="branch-card">
-        <div class="branch-icon b1">🏗️</div>
-        <p class="branch-label b1">Track 1</p>
-        <h3>Economic Development</h3>
-        <p>Commercial property generates tax revenue at a higher rate than residential, without adding school-age children. Brookline has significant untapped potential here — from new development to better use of existing assets to structured partnerships with the town's large non-profit landholders.</p>
-        <div class="branch-impact">
-          <span class="impact-label">Estimated 10-year potential</span>
-          <span class="impact-value">$8–15M / yr</span>
-        </div>
-        <ul class="branch-workstreams">
-          <li>Commercial parcel inventory &amp; fiscal impact modeling</li>
-          <li>Zoning reform for stalled high-value sites</li>
-          <li>PILOT program for non-profit landholders</li>
-          <li>Out-of-district SpEd revenue expansion</li>
-        </ul>
-      </a>
-
-      <a href="branch-2.html" class="branch-card">
-        <div class="branch-icon b2">🏛️</div>
-        <p class="branch-label b2">Track 2</p>
-        <h3>State &amp; Legislative Options</h3>
-        <p>Several aspects of Brookline's fiscal picture are shaped by state law and funding formulas. We're researching what options exist at the legislative level — including how special education costs for non-resident students are handled, Chapter 70 aid calculations, and what local revenue tools other communities have pursued.</p>
-        <div class="branch-impact">
-          <span class="impact-label">Estimated recovered costs potential</span>
-          <span class="impact-value">$4–8M / yr</span>
-        </div>
-        <ul class="branch-workstreams">
-          <li>METCO SpEd unreimbursed cost quantification</li>
-          <li>Coalition mapping with neighboring communities</li>
-          <li>State House delegation engagement</li>
-          <li>Chapter 70, Prop 2½, and transfer tax options</li>
-        </ul>
-      </a>
-
-      <a href="branch-3.html" class="branch-card">
-        <div class="branch-icon b3">📊</div>
-        <p class="branch-label b3">Track 3</p>
-        <h3>The 2030 Financial Transition</h3>
-        <p>In 2030, Brookline is on track to fully fund its pension liability — a genuine fiscal achievement. This frees up a significant annual cash flow that the town will need to allocate thoughtfully. We're modeling the options carefully, including what different choices would mean for long-term financial health and the town's credit rating.</p>
-        <div class="branch-impact">
-          <span class="impact-label">Operating relief potential (FY31+)</span>
-          <span class="impact-value">$10–20M / yr</span>
-        </div>
-        <ul class="branch-workstreams">
-          <li>GASB 74/75 actuarial liability baseline</li>
-          <li>Four $40M allocation scenarios modeled</li>
-          <li>Moody's Aaa rating sensitivity analysis</li>
-          <li>GIC healthcare reform savings model</li>
-        </ul>
-      </a>
-
-    </div>
-  </div>
-</section>
-
-<!-- E&RSC -->
-<section class="ersc">
-  <div class="section-inner">
-    <p class="section-eyebrow">Built on Official Work</p>
-    <h2 class="section-title">We start with Brookline's<br />own rigorous research.</h2>
-    <div class="ersc-grid">
-      <div>
-        <div class="section-body">
-          <p>
-            The Town's Expenditures &amp; Revenues Study Committee spent a full year producing a
-            <a href="https://brookline.news/wp-content/uploads/2026/03/ERSC-Final-Report-FINAL-031326-1.pdf" target="_blank" rel="noopener" style="color:rgba(255,255,255,0.7)">162-page independent report</a>
-            published in March 2026. It's thorough, honest work — and it's
-            the foundation for everything we do here. We're not trying to
-            relitigate their findings; we're trying to extend them.
-          </p>
-          <p style="margin-top:16px">
-            The committee itself noted areas it didn't have the mandate or
-            time to fully explore: long-term economic development strategy,
-            state legislative options, and how to handle the major financial
-            transition coming in 2030. That's where BrooklineForward picks up.
-          </p>
-          <p style="margin-top:16px">
-            The E&amp;RSC also identified nine specific structural reforms
-            they're calling for from the Schools — these form an important
-            part of the picture we're working from.
-          </p>
-        </div>
-      </div>
-      <div class="ersc-conditions">
-        <h4>The E&amp;RSC's 9 structural reform conditions for the Schools</h4>
-        <div class="condition-item"><div class="condition-num">1</div><div class="condition-text">Negotiate healthcare premium share down from 83% (comparable median: ~75–78%)</div></div>
-        <div class="condition-item"><div class="condition-num">2</div><div class="condition-text">Create mechanism to manage wage expense growth toward revenue growth</div></div>
-        <div class="condition-item"><div class="condition-num">3</div><div class="condition-text">Commission a middle school model and classroom consolidation study</div></div>
-        <div class="condition-item"><div class="condition-num">4</div><div class="condition-text">Complete MUNIS shared financial system implementation by end of FY27</div></div>
-        <div class="condition-item"><div class="condition-num">5</div><div class="condition-text">Verify all teaching assignments comply with contractual terms</div></div>
-        <div class="condition-item"><div class="condition-num">6</div><div class="condition-text">Audit and reduce technology leases and ed-tech subscriptions</div></div>
-        <div class="condition-item"><div class="condition-num">7</div><div class="condition-text">Require third-party school space users (7am–5:30pm) to pay fair-market rent</div></div>
-        <div class="condition-item"><div class="condition-num">8</div><div class="condition-text">Launch facilities governance and youth athletics coordination pilot in FY27</div></div>
-        <div class="condition-item"><div class="condition-num">9</div><div class="condition-text">Move the BEEP early education revolving fund toward full-cost break-even</div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PROGRESS -->
-<section class="progress-section" id="progress">
-  <div class="section-inner">
-    <p class="section-eyebrow">Open Research</p>
-    <h2 class="section-title">Everything we're working on, in real time.</h2>
-    <p class="progress-meta">
-      This tracker updates as we complete research tasks. All analysis is published openly in the
-      <a href="https://github.com/dmcconnell/BrooklineForward" target="_blank">public GitHub repo</a>.
-      See something wrong or have data we should look at?
-      <a href="https://github.com/dmcconnell/BrooklineForward/issues" target="_blank">We want to hear from you.</a>
-      &nbsp;·&nbsp; <a href="research.html">View the full task tracker →</a>
-    </p>
-    <div id="progress-grid"><div class="progress-loading">Loading research status…</div></div>
-  </div>
-</section>
-
-<!-- GET INVOLVED -->
-<section style="background: var(--white); padding: var(--section-pad);" id="involved">
-  <div class="section-inner">
-    <p class="section-eyebrow">Get Involved</p>
-    <h2 class="section-title">This works better with more people.</h2>
-    <p class="section-body" style="margin-bottom: 40px;">
-      BrooklineForward is a citizen project, not a closed one. Whether you want to share your expertise,
-      point us at data we're missing, push back on our analysis, or just follow along — you're welcome here.
-    </p>
-    <div class="involve-grid">
-      <div class="involve-card">
-        <div class="involve-card-icon">💬</div>
-        <h4>Share your thoughts</h4>
-        <p>Have local knowledge, data, or a perspective we should be considering? Open an issue on GitHub — every comment is read.</p>
-        <a href="https://github.com/dmcconnell/BrooklineForward/issues" target="_blank">Leave feedback on GitHub →</a>
-      </div>
-      <div class="involve-card">
-        <div class="involve-card-icon">🔍</div>
-        <h4>Read the research</h4>
-        <p>All our analysis, source documents, and task tracking are published openly. Read it, share it, tell us where we're wrong.</p>
-        <a href="research.html">Browse the full research tracker →</a>
-      </div>
-      <div class="involve-card">
-        <div class="involve-card-icon">📣</div>
-        <h4>Spread the word</h4>
-        <p>If you think open, data-driven civic work matters, share this with a neighbor. That's how it grows.</p>
-        <button onclick="shareProject()">Share BrooklineForward →</button>
-      </div>
-    </div>
-    <p id="copy-feedback" style="margin-top: 16px; font-size: 0.85rem; color: var(--green); display: none;">✓ Link copied to clipboard!</p>
-  </div>
-</section>
-
-<!-- CTA -->
-<section class="cta-section">
-  <h2>Brookline is worth<br />the effort to get this right.</h2>
-  <p>This is an open research project. The findings will be public, the methodology will be public, and the conclusions will be up for debate. That's the point.</p>
-  <div class="share-buttons">
-    <button class="btn btn-primary btn-share-main" onclick="shareProject()">🔗 Share BrooklineForward</button>
-    <a class="btn btn-share-x btn-secondary"
-       href="https://twitter.com/intent/tweet?text=Open+citizen+research+into+how+Brookline+builds+a+sustainable+financial+future.+Follow+along+%E2%86%92+https%3A%2F%2Fdmcconnell.github.io%2FBrooklineForward+%23BrooklineForward"
-       target="_blank" rel="noopener">Share on X / Twitter</a>
-  </div>
-</section>
-
 <div id="bf-footer"></div>
 <script src="assets/nav.js"></script>
-<script>
-  async function loadProgress() {
-    const grid = document.getElementById('progress-grid');
-    try {
-      const data = await fetch('./progress.json').then(r => r.json());
-      const badges = {
-        research: { cls:'badge-research', label:'Research phase' },
-        draft:    { cls:'badge-draft',    label:'Drafting' },
-        complete: { cls:'badge-complete', label:'Complete' },
-      };
-      grid.innerHTML = data.branches.map(branch => {
-        const pct = branch.totalTasks > 0 ? Math.round((branch.completedTasks / branch.totalTasks) * 100) : 0;
-        const status = branch.completedTasks === branch.totalTasks ? 'complete' : branch.completedTasks > 0 ? 'draft' : 'research';
-        const badge = badges[status];
-        return `<div class="progress-card">
-          <div class="progress-card-header">
-            <div class="progress-card-name">${branch.name}</div>
-            <span class="progress-badge ${badge.cls}">${badge.label}</span>
-          </div>
-          <div class="progress-bar-wrap">
-            <div class="progress-bar-track"><div class="progress-bar-fill" style="width:${pct}%"></div></div>
-            <div class="progress-counts"><span>${branch.completedTasks} of ${branch.totalTasks} tasks complete</span><span>${pct}%</span></div>
-          </div>
-          <ul class="progress-highlights">${branch.highlights.map(h=>`<li>${h}</li>`).join('')}</ul>
-        </div>`;
-      }).join('');
-    } catch(e) {
-      grid.innerHTML = `<p class="progress-loading">Tracker not available — <a href="https://github.com/dmcconnell/BrooklineForward" target="_blank">view on GitHub</a>.</p>`;
-    }
-  }
-  loadProgress();
-
-  async function shareProject() {
-    const url = 'https://dmcconnell.github.io/BrooklineForward';
-    if (navigator.share) { try { await navigator.share({ title:'BrooklineForward', text:'Open citizen research into how Brookline builds a sustainable financial future.', url }); return; } catch(e) {} }
-    try { await navigator.clipboard.writeText(url); document.getElementById('copy-feedback').style.display='block'; setTimeout(()=>document.getElementById('copy-feedback').style.display='none', 3000); }
-    catch(e) { alert('Share URL: ' + url); }
-  }
-</script>
 </body>
 </html>

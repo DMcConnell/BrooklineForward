@@ -1,1326 +1,423 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Budget Explorer — BrooklineForward</title>
-    <meta
-      name="description"
-      content="Interactive visualizations of Brookline's budget data — revenue, expenditures, projections, and the structural deficit explained."
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="assets/styles.css" />
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
-  </head>
-  <body>
-    <div id="bf-nav"></div>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Budget Explorer - BrooklineForward</title>
+  <meta name="description" content="Interactive charts showing Brookline's budget data from official town sources.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+</head>
+<body>
 
-    <!-- PAGE HEADER -->
-    <header class="page-header">
-      <div class="page-header-inner">
-        <p class="breadcrumb">
-          <a href="index.html">Home</a> <span>/</span> Budget Explorer
-        </p>
-        <h1>Brookline Budget Explorer</h1>
-        <p class="page-header-sub">
-          Interactive charts built from official Town budget documents. See
-          where the money comes from, where it goes, and why the gap between
-          revenue and costs keeps growing.
-        </p>
-        <div class="page-header-meta">
-          <span class="header-badge info">FY2021 – FY2030</span>
-          <span class="header-badge info"
-            >Sources: FY25 Financial Plan, FY26–30 LRFP, Article 9, ERSC
-            Report</span
-          >
-        </div>
-      </div>
-    </header>
+<div id="bf-nav"></div>
 
-    <!-- CHART NAVIGATION -->
-    <div class="budget-chart-nav">
-      <div class="section-inner">
-        <button class="chart-nav-btn active" data-target="scissors">
-          The Structural Gap
-        </button>
-        <!-- <button class="chart-nav-btn" data-target="deficit">Cumulative Deficit</button> -->
-        <button class="chart-nav-btn" data-target="revenue-breakdown">
-          Revenue Sources
-        </button>
-        <button class="chart-nav-btn" data-target="expenditure-breakdown">
-          Where It Goes
-        </button>
-        <!-- <button class="chart-nav-btn" data-target="benefits">Benefits Cost Drivers</button> -->
-        <button class="chart-nav-btn" data-target="departments">
-          Department Trends
-        </button>
-        <button class="chart-nav-btn" data-target="allocation">
-          FY25 Allocation
-        </button>
-        <!-- <button class="chart-nav-btn" data-target="salary-escalator">Salary Escalator</button> -->
-        <button class="chart-nav-btn" data-target="enrollment">
-          Enrollment vs. Cost
-        </button>
-        <button class="chart-nav-btn" data-target="fte-changes">
-          Staffing Shifts
-        </button>
-        <button class="chart-nav-btn" data-target="growth-drivers">
-          Growth Drivers
-        </button>
-        <!-- <button class="chart-nav-btn" data-target="sped">SpEd Subsidy</button> -->
-        <!-- <button class="chart-nav-btn" data-target="beep">BEEP Cost Gap</button> -->
-      </div>
+<div class="page-wrap">
+  <div class="page-header">
+    <h1>Budget Explorer</h1>
+    <p>Interactive charts built from Brookline's published financial data. All figures come from official town sources listed below each chart.</p>
+  </div>
+
+  <div class="chart-nav" id="chart-nav"></div>
+
+  <!-- Revenue vs Expenditures -->
+  <div class="chart-panel active" id="panel-scissors">
+    <div class="chart-section">
+      <h2>Revenue and Expenditure Trends</h2>
+      <p class="chart-description">Total town revenue and total expenditures, FY2025 through FY2030. Revenue figures include property taxes, local receipts, state aid, and other sources. Expenditure figures include all town and school spending. Where lines diverge, the town is projected to spend more than it takes in.</p>
+      <div class="chart-container"><canvas id="chart-scissors"></canvas></div>
+      <p class="chart-source">Source: FY2025 Financial Plan, FY2026-FY2030 Long Range Financial Plan (Town of Brookline)</p>
     </div>
+  </div>
 
-    <!-- CHARTS -->
-    <section class="budget-section">
-      <div class="section-inner">
-        <!-- 1. SCISSORS CHART -->
-        <div class="chart-panel active" id="panel-scissors">
-          <div class="chart-header">
-            <div>
-              <h2 class="section-title">Revenue vs. Expenditures</h2>
-              <p class="chart-subtitle">
-                The core structural challenge: costs grow faster than revenue,
-                opening a widening gap.
-              </p>
-            </div>
-            <div class="chart-legend-custom">
-              <span class="legend-dot" style="background: var(--green)"></span>
-              Revenue
-              <span class="legend-dot" style="background: #dc2626"></span>
-              Expenditures
-              <span class="legend-dot legend-dashed"></span> Projected
-            </div>
-          </div>
-          <div class="chart-container">
-            <canvas id="chart-scissors"></canvas>
-          </div>
-          <div class="chart-insight">
-            <strong>Key insight:</strong> Revenue grows ~2–3% per year while
-            expenditures grow ~4–6%. By FY2030, the cumulative gap reaches $31.7
-            million — roughly 7% of operating revenue.
-          </div>
-        </div>
+  <!-- Revenue Breakdown -->
+  <div class="chart-panel" id="panel-revenue">
+    <div class="chart-section">
+      <h2>Where Revenue Comes From</h2>
+      <p class="chart-description">Brookline's revenue broken down by source over ten fiscal years. Property taxes make up the largest share. "Free cash" is unspent money from prior years that gets certified for use in the next budget.</p>
+      <div class="chart-container"><canvas id="chart-revenue"></canvas></div>
+      <p class="chart-source">Source: FY2025 Financial Plan, FY2026-FY2030 Long Range Financial Plan (Town of Brookline)</p>
+    </div>
+  </div>
 
-        <!-- 2. DEFICIT CHART -->
-        <div class="chart-panel" id="panel-deficit">
-          <div class="chart-header">
-            <div>
-              <h2 class="section-title">Cumulative Projected Deficit</h2>
-              <p class="chart-subtitle">
-                Without structural changes, the gap between revenue and costs
-                compounds year after year.
-              </p>
-            </div>
-          </div>
-          <div class="chart-container">
-            <canvas id="chart-deficit"></canvas>
-          </div>
-          <div class="chart-insight">
-            <strong>Key insight:</strong> The School deficit (~$20.8M by FY30)
-            is roughly twice the Town-side deficit (~$10.9M), reflecting faster
-            growth in education costs relative to the 60/40 funding split.
-          </div>
-        </div>
+  <!-- Expenditure Breakdown -->
+  <div class="chart-panel" id="panel-expenditures">
+    <div class="chart-section">
+      <h2>Where the Money Goes</h2>
+      <p class="chart-description">Major spending categories from FY2025 through FY2030. The School Department and employee benefits are the two largest categories. "Non-Appropriated" covers items like state assessments and overlay reserve that don't go through the normal budget vote.</p>
+      <div class="chart-container"><canvas id="chart-expenditures"></canvas></div>
+      <p class="chart-source">Source: FY2025 Financial Plan, FY2026-FY2030 Long Range Financial Plan (Town of Brookline)</p>
+    </div>
+  </div>
 
-        <!-- 3. REVENUE BREAKDOWN -->
-        <div class="chart-panel" id="panel-revenue-breakdown">
-          <div class="chart-header">
-            <div>
-              <h2 class="section-title">Revenue by Source</h2>
-              <p class="chart-subtitle">
-                Property taxes dominate Brookline's revenue — and are capped by
-                Proposition 2 1/2.
-              </p>
-            </div>
-            <div class="chart-toggle">
-              <button
-                class="toggle-btn active"
-                data-chart="revenue"
-                data-mode="stacked"
-              >
-                Stacked
-              </button>
-              <button class="toggle-btn" data-chart="revenue" data-mode="line">
-                Lines
-              </button>
-            </div>
-          </div>
-          <div class="chart-container">
-            <canvas id="chart-revenue"></canvas>
-          </div>
-          <div class="chart-insight">
-            <strong>Key insight:</strong> Property tax provides ~72% of all
-            revenue but grows only ~3%/year under Prop 2 1/2. Free Cash usage
-            spiked in FY24-25 to backfill the gap — an unsustainable pattern.
-          </div>
-        </div>
+  <!-- Cumulative Deficit -->
+  <div class="chart-panel" id="panel-deficit">
+    <div class="chart-section">
+      <h2>Projected Cumulative Deficit</h2>
+      <p class="chart-description">If current revenue and spending trends continue, this shows the projected gap between what the town takes in and what it spends, broken down between Town-side and School-side shortfalls. These projections are from the Long Range Financial Plan.</p>
+      <div class="chart-container"><canvas id="chart-deficit"></canvas></div>
+      <p class="chart-source">Source: FY2026-FY2030 Long Range Financial Plan (Town of Brookline)</p>
+    </div>
+  </div>
 
-        <!-- 4. EXPENDITURE BREAKDOWN -->
-        <div class="chart-panel" id="panel-expenditure-breakdown">
-          <div class="chart-header">
-            <div>
-              <h2 class="section-title">Expenditures by Category</h2>
-              <p class="chart-subtitle">
-                Education and benefits together consume over 73% of the budget —
-                and both grow faster than revenue.
-              </p>
-            </div>
-          </div>
-          <div class="chart-container">
-            <canvas id="chart-expenditures"></canvas>
-          </div>
-          <div class="chart-insight">
-            <strong>Key insight:</strong> Schools and benefits alone account for
-            $292M in FY30 — up from $225M in FY25. Debt service nearly doubles
-            from $37M to $54M due to school construction borrowing.
-          </div>
-        </div>
+  <!-- Benefits Drivers -->
+  <div class="chart-panel" id="panel-benefits">
+    <div class="chart-section">
+      <h2>Benefits Cost Breakdown</h2>
+      <p class="chart-description">The major components of employee benefits spending. Group health insurance and pensions are the largest pieces. "OPEB" stands for Other Post-Employment Benefits, mainly retiree healthcare. These costs are for both town and school employees combined.</p>
+      <div class="chart-container"><canvas id="chart-benefits"></canvas></div>
+      <p class="chart-source">Source: FY2025 Financial Plan, FY2026-FY2030 Long Range Financial Plan (Town of Brookline)</p>
+    </div>
+  </div>
 
-        <!-- 5. BENEFITS DRIVERS -->
-        <div class="chart-panel" id="panel-benefits">
-          <div class="chart-header">
-            <div>
-              <h2 class="section-title">Benefits Cost Drivers</h2>
-              <p class="chart-subtitle">
-                Health insurance and pensions are the fastest-growing costs in
-                the budget.
-              </p>
-            </div>
-          </div>
-          <div class="chart-container">
-            <canvas id="chart-benefits"></canvas>
-          </div>
-          <div class="chart-insight">
-            <strong>Key insight:</strong> Group health insurance grows from $38M
-            to $61M (+60%) in just 5 years. The pension burden drops in FY30 as
-            Brookline reaches full funding — a major transition point.
-          </div>
-        </div>
+  <!-- Growth Rates -->
+  <div class="chart-panel" id="panel-growth">
+    <div class="chart-section">
+      <h2>Revenue vs. Expenditure Growth Rates</h2>
+      <p class="chart-description">Year-over-year percentage change in total revenue compared to total expenditures. When the expenditure bar is taller than the revenue bar, spending is growing faster than income for that year.</p>
+      <div class="chart-container"><canvas id="chart-growth"></canvas></div>
+      <p class="chart-source">Source: FY2026-FY2030 Long Range Financial Plan (Town of Brookline)</p>
+    </div>
+  </div>
 
-        <!-- 6. DEPARTMENT TRENDS -->
-        <div class="chart-panel" id="panel-departments">
-          <div class="chart-header">
-            <div>
-              <h2 class="section-title">Department Spending Trends</h2>
-              <p class="chart-subtitle">
-                Six-year spending trajectory for major town departments and
-                schools.
-              </p>
-            </div>
-          </div>
-          <div class="chart-container">
-            <canvas id="chart-departments"></canvas>
-          </div>
-          <div class="chart-insight">
-            <strong>Key insight:</strong> Police spending jumped 9.8% in FY26
-            due to a new contract with 18% total pay increases. Public Works
-            rose 9.3% partly due to solid waste privatization costs.
-          </div>
-        </div>
+  <!-- FY25 Allocation -->
+  <div class="chart-panel" id="panel-allocation">
+    <div class="chart-section">
+      <h2>How the FY2025 Budget Is Divided</h2>
+      <p class="chart-description">A snapshot of how the FY2025 adopted budget is allocated by function. Education (including school employee benefits) accounts for the majority of spending.</p>
+      <div class="chart-container"><canvas id="chart-allocation"></canvas></div>
+      <p class="chart-source">Source: FY2025 Financial Plan (Town of Brookline)</p>
+    </div>
+  </div>
 
-        <!-- 7. FUNCTIONAL ALLOCATION -->
-        <div class="chart-panel" id="panel-allocation">
-          <div class="chart-header">
-            <div>
-              <h2 class="section-title">Where Every Dollar Goes (FY2025)</h2>
-              <p class="chart-subtitle">
-                The fully-allocated general fund operating budget by function.
-              </p>
-            </div>
-          </div>
-          <div class="chart-container chart-container-short">
-            <canvas id="chart-allocation"></canvas>
-          </div>
-          <div class="chart-insight">
-            <strong>Key insight:</strong> Nearly 60 cents of every dollar goes
-            to education. Combined with non-school benefits (14%) and public
-            safety (11.8%), these three areas consume 85% of the budget.
-          </div>
-        </div>
+</div>
 
-        <!-- 8. SALARY STEP ESCALATOR -->
-        <div class="chart-panel" id="panel-salary-escalator">
-          <div class="chart-header">
-            <div>
-              <h2 class="section-title">The Salary Step Escalator</h2>
-              <p class="chart-subtitle">
-                Nominal COLA is 2.75%, but step increases push actual educator
-                raises to 5–8% — well above area inflation of 3.2%.
-              </p>
-            </div>
-          </div>
-          <div class="chart-container">
-            <canvas id="chart-salary-escalator"></canvas>
-          </div>
-          <div class="chart-insight">
-            <strong>Key insight:</strong> About 52% of Brookline educators are
-            on the step grid. A first-year teacher with a Bachelor's gets an
-            8.0% raise — nearly 3x the nominal COLA. This compounds across
-            hundreds of positions every year. Source: ERSC Report, p. 64.
-          </div>
-        </div>
+<div id="bf-footer"></div>
+<script src="assets/nav.js"></script>
+<script>
+(function() {
+  // Colors
+  var C = {
+    green: '#2a7a4a', greenLt: 'rgba(42,122,74,0.15)',
+    navy: '#1b2a4a', navyLt: 'rgba(27,42,74,0.15)',
+    gold: '#c8973e', goldLt: 'rgba(200,151,62,0.15)',
+    red: '#c0392b', redLt: 'rgba(192,57,43,0.15)',
+    blue: '#2980b9', blueLt: 'rgba(41,128,185,0.15)',
+    teal: '#1abc9c', tealLt: 'rgba(26,188,156,0.15)',
+    purple: '#8e44ad', purpleLt: 'rgba(142,68,173,0.15)',
+    gray: '#868e96', grayLt: 'rgba(134,142,150,0.15)'
+  };
 
-        <!-- 9. ENROLLMENT VS COST -->
-        <div class="chart-panel" id="panel-enrollment">
-          <div class="chart-header">
-            <div>
-              <h2 class="section-title">
-                Enrollment Falls, Cost Per Student Rises
-              </h2>
-              <p class="chart-subtitle">
-                School enrollment is declining toward a projected trough — but
-                the budget keeps growing.
-              </p>
-            </div>
-          </div>
-          <div class="chart-container">
-            <canvas id="chart-enrollment"></canvas>
-          </div>
-          <div class="chart-insight">
-            <strong>Key insight:</strong> Enrollment dropped from 7,762
-            (SY19-20) to a projected low of 6,886 (SY27-28) — down 11%.
-            Meanwhile, the school budget grew from $121M to $142M. Cost per
-            student rose from $15,557 to $20,539 — up 32%. Source: ERSC Report
-            (Cropper-McKibben forecast).
-          </div>
-        </div>
+  // Format helpers
+  function fmtM(v) {
+    if (v == null) return '';
+    var m = v / 1e6;
+    return '$' + m.toFixed(1) + 'M';
+  }
+  function fmtPct(v) { return v.toFixed(1) + '%'; }
 
-        <!-- 10. FTE CHANGES -->
-        <div class="chart-panel" id="panel-fte-changes">
-          <div class="chart-header">
-            <div>
-              <h2 class="section-title">Staffing Shifts: FY2019 → FY2026</h2>
-              <p class="chart-subtitle">
-                Where the town added and cut positions over seven years. Total:
-                +18.8 FTEs, +$13.1M in salary.
-              </p>
-            </div>
-          </div>
-          <div class="chart-container chart-container-tall">
-            <canvas id="chart-fte"></canvas>
-          </div>
-          <div class="chart-insight">
-            <strong>Key insight:</strong> Police lost 7.5 FTE positions while
-            Health gained 8.24. Total town salary budget grew 24.6% ($53.2M →
-            $66.3M) — well above inflation. Source: ERSC Report, p. 108.
-          </div>
-        </div>
+  // Chart defaults
+  Chart.defaults.font.family = "'Inter', sans-serif";
+  Chart.defaults.font.size = 13;
+  Chart.defaults.plugins.tooltip.backgroundColor = '#1b2a4a';
+  Chart.defaults.plugins.tooltip.cornerRadius = 6;
+  Chart.defaults.plugins.tooltip.padding = 10;
 
-        <!-- 11. GROWTH DRIVERS -->
-        <div class="chart-panel" id="panel-growth-drivers">
-          <div class="chart-header">
-            <div>
-              <h2 class="section-title">What's Driving Budget Growth</h2>
-              <p class="chart-subtitle">
-                Four categories account for the bulk of budget growth from
-                FY2019 to FY2026.
-              </p>
-            </div>
-          </div>
-          <div class="chart-container">
-            <canvas id="chart-growth-drivers"></canvas>
-          </div>
-          <div class="chart-insight">
-            <strong>Key insight:</strong> Debt service grew at 20.1% annually —
-            by far the fastest. This is driven by school construction borrowing
-            (High School, Driscoll, Pierce, fire stations). Pensions grew at
-            8.1%, health insurance at 5.1%. Source: ERSC Report, p. 107.
-          </div>
-        </div>
+  // Chart nav
+  var panels = [
+    { id: 'scissors', label: 'Revenue vs. Spending' },
+    { id: 'revenue', label: 'Revenue Sources' },
+    { id: 'expenditures', label: 'Spending Categories' },
+    { id: 'deficit', label: 'Projected Deficit' },
+    { id: 'benefits', label: 'Benefits Costs' },
+    { id: 'growth', label: 'Growth Rates' },
+    { id: 'allocation', label: 'FY25 Breakdown' }
+  ];
 
-        <!-- 12. SPED NON-RESIDENT -->
-        <div class="chart-panel" id="panel-sped">
-          <div class="chart-header">
-            <div>
-              <h2 class="section-title">The Non-Resident SpEd Subsidy</h2>
-              <p class="chart-subtitle">
-                Brookline educates non-resident students who are significantly
-                more likely to need — and receive — special education services,
-                at a cost the town largely absorbs.
-              </p>
-            </div>
-          </div>
-          <div class="chart-container chart-container-short">
-            <div class="sped-grid">
-              <div class="sped-chart-wrap">
-                <canvas id="chart-sped-rates"></canvas>
-              </div>
-              <div class="sped-chart-wrap">
-                <canvas id="chart-sped-cost"></canvas>
-              </div>
-            </div>
-          </div>
-          <div class="chart-insight">
-            <strong>Key insight:</strong> METCO students receive SpEd at 2.2x
-            the rate of residents (34.8% vs 15.9%). The unreimbursed cost is
-            ~$4M/year — roughly the size of the FY26 Town-side deficit.
-            Brookline also receives below-average METCO funding ($6,670/student
-            vs. state average $8,026). Source: ERSC Report, pp. 68-72.
-          </div>
-        </div>
+  var navEl = document.getElementById('chart-nav');
+  panels.forEach(function(p, i) {
+    var btn = document.createElement('button');
+    btn.className = 'chart-nav-btn' + (i === 0 ? ' active' : '');
+    btn.textContent = p.label;
+    btn.setAttribute('data-panel', p.id);
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('.chart-nav-btn').forEach(function(b) { b.classList.remove('active'); });
+      document.querySelectorAll('.chart-panel').forEach(function(el) { el.classList.remove('active'); });
+      btn.classList.add('active');
+      document.getElementById('panel-' + p.id).classList.add('active');
+    });
+    navEl.appendChild(btn);
+  });
 
-        <!-- 13. BEEP COST GAP -->
-        <div class="chart-panel" id="panel-beep">
-          <div class="chart-header">
-            <div>
-              <h2 class="section-title">BEEP: Tuition vs. True Cost</h2>
-              <p class="chart-subtitle">
-                Brookline's early education program charges families only a
-                fraction of what it actually costs to run.
-              </p>
-            </div>
-          </div>
-          <div class="chart-container chart-container-short">
-            <canvas id="chart-beep"></canvas>
-          </div>
-          <div class="chart-insight">
-            <strong>Key insight:</strong> BEEP's true cost is $42,832 per
-            student (101.4 FTE staff for 253 students). Tuition covers only 63%
-            of the breakeven cost — and that breakeven figure excludes overhead
-            allocated elsewhere. The total program costs $10.8M/year. Source:
-            ERSC Report, pp. 79-87.
-          </div>
-        </div>
-      </div>
-    </section>
+  // Load data and build charts
+  fetch('data/budget.json')
+    .then(function(r) { return r.json(); })
+    .then(function(d) { buildCharts(d); })
+    .catch(function() {
+      document.querySelectorAll('.chart-container').forEach(function(el) {
+        el.innerHTML = '<p style="padding:40px;color:#868e96;text-align:center">Could not load budget data.</p>';
+      });
+    });
 
-    <!-- DATA SOURCES -->
-    <section
-      class="article-section"
-      style="background: var(--cream); padding: 48px 24px"
-    >
-      <div class="section-inner" style="max-width: var(--article-w)">
-        <h2 class="section-title" style="font-size: 1.3rem">About this data</h2>
-        <p
-          style="
-            font-size: 0.95rem;
-            color: var(--gray-700);
-            line-height: 1.75;
-            margin-bottom: 16px;
-          "
-        >
-          All figures come from official Town of Brookline documents: the FY2025
-          Financial Plan, the FY2026–FY2030 Long Range Financial Plan (December
-          2024), the Article 9 FY2026 budget motion approved by the Advisory
-          Committee (15-0-0) in May 2025, and the Expenditures &amp; Revenues
-          Study Committee (ERSC) Final Report (March 2026).
-        </p>
-        <p
-          style="
-            font-size: 0.95rem;
-            color: var(--gray-700);
-            line-height: 1.75;
-            margin-bottom: 16px;
-          "
-        >
-          <strong>FY2021–FY2024</strong> figures are actuals.
-          <strong>FY2025–FY2026</strong> are adopted budgets.
-          <strong>FY2027–FY2030</strong> are projections from the LRFP and carry
-          the assumptions noted in that document (12% health insurance increase
-          in FY26, 10% thereafter; 2.5% state aid growth; pension full-funding
-          by 2030).
-        </p>
-        <p
-          style="font-size: 0.95rem; color: var(--gray-700); line-height: 1.75"
-        >
-          See something that needs correcting?
-          <a
-            href="https://github.com/dmcconnell/BrooklineForward/issues"
-            target="_blank"
-            style="color: var(--green)"
-            >Open an issue on GitHub</a
-          >
-          — we want this to be right.
-        </p>
-      </div>
-    </section>
+  function buildCharts(d) {
+    var fy = d.fiscalYears;
+    var fy6 = d.cumulativeDeficit.years;
 
-    <div id="bf-footer"></div>
+    // 1. Scissors
+    var scissorsRevenue = [];
+    var scissorsExp = [];
+    for (var i = 0; i < fy.length; i++) {
+      if (d.totalRevenue[i] != null && d.totalExpenditures[i] != null) {
+        scissorsRevenue.push({ x: fy[i], y: d.totalRevenue[i] });
+        scissorsExp.push({ x: fy[i], y: d.totalExpenditures[i] });
+      }
+    }
 
-    <script src="assets/nav.js"></script>
-    <script>
-      (function () {
-        /* ── Color palette ── */
-        const C = {
-          green: '#2d6a4f',
-          greenLt: '#40916c',
-          navy: '#1b2a4a',
-          navyLt: '#2c4a7a',
-          gold: '#c9822a',
-          goldLt: '#e8a030',
-          red: '#dc2626',
-          redLt: '#ef4444',
-          blue: '#3b82f6',
-          purple: '#7c3aed',
-          teal: '#0d9488',
-          pink: '#db2777',
-          gray: '#6b7280',
-          grayLt: '#9ca3af',
-        };
-
-        /* ── Chart nav ── */
-        document.querySelectorAll('.chart-nav-btn').forEach((btn) => {
-          btn.addEventListener('click', function () {
-            document
-              .querySelectorAll('.chart-nav-btn')
-              .forEach((b) => b.classList.remove('active'));
-            document
-              .querySelectorAll('.chart-panel')
-              .forEach((p) => p.classList.remove('active'));
-            this.classList.add('active');
-            document
-              .getElementById('panel-' + this.dataset.target)
-              .classList.add('active');
-          });
-        });
-
-        /* ── Shared defaults ── */
-        Chart.defaults.font.family = "'Inter', system-ui, sans-serif";
-        Chart.defaults.font.size = 13;
-        Chart.defaults.color = '#374151';
-        Chart.defaults.plugins.legend.labels.usePointStyle = true;
-        Chart.defaults.plugins.legend.labels.pointStyleWidth = 12;
-        Chart.defaults.plugins.tooltip.backgroundColor = '#1b2a4a';
-        Chart.defaults.plugins.tooltip.cornerRadius = 6;
-        Chart.defaults.plugins.tooltip.padding = 12;
-        Chart.defaults.plugins.tooltip.titleFont = { weight: '600' };
-
-        const fmtM = (v) => (v == null ? '' : '$' + (v / 1e6).toFixed(1) + 'M');
-        const fmtMShort = (v) => (v == null ? '' : (v / 1e6).toFixed(0) + 'M');
-        const tooltipCb = {
-          label: (ctx) =>
-            ctx.dataset.label + ': $' + (ctx.parsed.y / 1e6).toFixed(1) + 'M',
-        };
-
-        /* ── Load data ── */
-        fetch('data/budget.json')
-          .then((r) => r.json())
-          .then((data) => {
-            buildScissors(data);
-            buildDeficit(data);
-            buildRevenue(data);
-            buildExpenditures(data);
-            buildBenefits(data);
-            buildDepartments(data);
-            buildAllocation(data);
-            buildSalaryEscalator(data);
-            buildEnrollment(data);
-            buildFTE(data);
-            buildGrowthDrivers(data);
-            buildSpEd(data);
-            buildBEEP(data);
-          });
-
-        /* ── 1. Scissors chart ── */
-        function buildScissors(d) {
-          new Chart(document.getElementById('chart-scissors'), {
-            type: 'line',
-            data: {
-              labels: d.fiscalYears,
-              datasets: [
-                {
-                  label: 'Total Revenue',
-                  data: d.totalRevenue,
-                  borderColor: C.green,
-                  backgroundColor: C.green + '18',
-                  fill: false,
-                  tension: 0.3,
-                  pointRadius: 4,
-                  pointHoverRadius: 7,
-                  borderWidth: 3,
-                  segment: {
-                    borderDash: (ctx) => (ctx.p0DataIndex >= 4 ? [6, 4] : []),
-                  },
-                },
-                {
-                  label: 'Total Expenditures',
-                  data: d.totalExpenditures,
-                  borderColor: C.red,
-                  backgroundColor: C.red + '18',
-                  fill: false,
-                  tension: 0.3,
-                  pointRadius: 4,
-                  pointHoverRadius: 7,
-                  borderWidth: 3,
-                  segment: {
-                    borderDash: (ctx) => (ctx.p0DataIndex >= 4 ? [6, 4] : []),
-                  },
-                },
-              ],
-            },
-            options: {
-              responsive: true,
-              maintainAspectRatio: false,
-              interaction: { mode: 'index', intersect: false },
-              plugins: {
-                tooltip: { callbacks: tooltipCb },
-                annotation: null,
-              },
-              scales: {
-                y: {
-                  ticks: { callback: (v) => '$' + (v / 1e6).toFixed(0) + 'M' },
-                  grid: { color: '#e5e7eb' },
-                  min: 280000000,
-                },
-                x: { grid: { display: false } },
-              },
-            },
-          });
-        }
-
-        /* ── 2. Deficit chart ── */
-        function buildDeficit(d) {
-          new Chart(document.getElementById('chart-deficit'), {
-            type: 'bar',
-            data: {
-              labels: d.cumulativeDeficit.years,
-              datasets: [
-                {
-                  label: 'School Deficit',
-                  data: d.cumulativeDeficit.school,
-                  backgroundColor: C.red + 'cc',
-                  borderRadius: 4,
-                },
-                {
-                  label: 'Town Deficit',
-                  data: d.cumulativeDeficit.town,
-                  backgroundColor: C.gold + 'cc',
-                  borderRadius: 4,
-                },
-              ],
-            },
-            options: {
-              responsive: true,
-              maintainAspectRatio: false,
-              interaction: { mode: 'index', intersect: false },
-              plugins: {
-                tooltip: {
-                  callbacks: {
-                    label: (ctx) => {
-                      const v = ctx.parsed.y;
-                      return (
-                        ctx.dataset.label +
-                        ': ' +
-                        (v === 0
-                          ? '$0'
-                          : '-$' + (Math.abs(v) / 1e6).toFixed(1) + 'M')
-                      );
-                    },
-                    afterBody: (ctx) => {
-                      const total = ctx.reduce((s, c) => s + c.parsed.y, 0);
-                      return (
-                        '\nTotal: ' +
-                        (total === 0
-                          ? '$0'
-                          : '-$' + (Math.abs(total) / 1e6).toFixed(1) + 'M')
-                      );
-                    },
-                  },
-                },
-              },
-              scales: {
-                x: { stacked: true, grid: { display: false } },
-                y: {
-                  stacked: true,
-                  ticks: {
-                    callback: (v) =>
-                      v === 0
-                        ? '$0'
-                        : '-$' + (Math.abs(v) / 1e6).toFixed(0) + 'M',
-                  },
-                  grid: { color: '#e5e7eb' },
-                },
-              },
-            },
-          });
-        }
-
-        /* ── 3. Revenue breakdown ── */
-        function buildRevenue(d) {
-          const colors = [C.navy, C.green, C.blue, C.gold, C.grayLt];
-          const keys = Object.keys(d.revenueBySource);
-          const datasets = keys.map((k, i) => ({
-            label: k,
-            data: d.revenueBySource[k],
-            backgroundColor: colors[i] + 'cc',
-            borderColor: colors[i],
-            borderWidth: 2,
-            fill: true,
+    new Chart(document.getElementById('chart-scissors'), {
+      type: 'line',
+      data: {
+        labels: scissorsRevenue.map(function(p) { return p.x; }),
+        datasets: [
+          {
+            label: 'Total Revenue',
+            data: scissorsRevenue.map(function(p) { return p.y; }),
+            borderColor: C.green,
+            backgroundColor: C.greenLt,
+            fill: false,
             tension: 0.3,
-            pointRadius: 0,
-          }));
-
-          const ctx = document.getElementById('chart-revenue');
-          let chart = new Chart(ctx, {
-            type: 'bar',
-            data: { labels: d.fiscalYears, datasets },
-            options: {
-              responsive: true,
-              maintainAspectRatio: false,
-              interaction: { mode: 'index', intersect: false },
-              plugins: { tooltip: { callbacks: tooltipCb } },
-              scales: {
-                x: { stacked: true, grid: { display: false } },
-                y: {
-                  stacked: true,
-                  ticks: { callback: (v) => '$' + (v / 1e6).toFixed(0) + 'M' },
-                  grid: { color: '#e5e7eb' },
-                },
-              },
-            },
-          });
-
-          /* Toggle stacked/line */
-          document
-            .querySelectorAll('.toggle-btn[data-chart="revenue"]')
-            .forEach((btn) => {
-              btn.addEventListener('click', function () {
-                document
-                  .querySelectorAll('.toggle-btn[data-chart="revenue"]')
-                  .forEach((b) => b.classList.remove('active'));
-                this.classList.add('active');
-                chart.destroy();
-                const isLine = this.dataset.mode === 'line';
-                const ds = keys.map((k, i) => ({
-                  label: k,
-                  data: d.revenueBySource[k],
-                  backgroundColor: isLine ? 'transparent' : colors[i] + 'cc',
-                  borderColor: colors[i],
-                  borderWidth: 2,
-                  fill: !isLine,
-                  tension: 0.3,
-                  pointRadius: isLine ? 4 : 0,
-                }));
-                chart = new Chart(ctx, {
-                  type: isLine ? 'line' : 'bar',
-                  data: { labels: d.fiscalYears, datasets: ds },
-                  options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    interaction: { mode: 'index', intersect: false },
-                    plugins: { tooltip: { callbacks: tooltipCb } },
-                    scales: {
-                      x: { stacked: !isLine, grid: { display: false } },
-                      y: {
-                        stacked: !isLine,
-                        ticks: {
-                          callback: (v) => '$' + (v / 1e6).toFixed(0) + 'M',
-                        },
-                        grid: { color: '#e5e7eb' },
-                      },
-                    },
-                  },
-                });
-              });
-            });
+            pointRadius: 4
+          },
+          {
+            label: 'Total Expenditures',
+            data: scissorsExp.map(function(p) { return p.y; }),
+            borderColor: C.red,
+            backgroundColor: C.redLt,
+            fill: false,
+            tension: 0.3,
+            pointRadius: 4
+          }
+        ]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        scales: {
+          y: {
+            ticks: { callback: function(v) { return fmtM(v); } },
+            grid: { color: 'rgba(0,0,0,0.05)' }
+          },
+          x: { grid: { display: false } }
+        },
+        plugins: {
+          tooltip: {
+            callbacks: { label: function(ctx) { return ctx.dataset.label + ': ' + fmtM(ctx.raw); } }
+          }
         }
+      }
+    });
 
-        /* ── 4. Expenditure breakdown ── */
-        function buildExpenditures(d) {
-          const colors = [C.red, C.navy, C.gold, C.blue, C.green, C.grayLt];
-          const keys = Object.keys(d.expendituresByCategory);
-          const datasets = keys.map((k, i) => ({
-            label: k,
-            data: d.expendituresByCategory[k],
-            backgroundColor: colors[i] + 'cc',
-            borderRadius: 2,
-          }));
-
-          new Chart(document.getElementById('chart-expenditures'), {
-            type: 'bar',
-            data: { labels: d.fiscalYears, datasets },
-            options: {
-              responsive: true,
-              maintainAspectRatio: false,
-              interaction: { mode: 'index', intersect: false },
-              plugins: { tooltip: { callbacks: tooltipCb } },
-              scales: {
-                x: { stacked: true, grid: { display: false } },
-                y: {
-                  stacked: true,
-                  ticks: { callback: (v) => '$' + (v / 1e6).toFixed(0) + 'M' },
-                  grid: { color: '#e5e7eb' },
-                },
-              },
-            },
-          });
+    // 2. Revenue breakdown (stacked bar)
+    var revSources = Object.keys(d.revenueBySource);
+    var revColors = [C.green, C.blue, C.gold, C.teal, C.gray];
+    new Chart(document.getElementById('chart-revenue'), {
+      type: 'bar',
+      data: {
+        labels: fy,
+        datasets: revSources.map(function(src, idx) {
+          return {
+            label: src,
+            data: d.revenueBySource[src],
+            backgroundColor: revColors[idx] || C.gray
+          };
+        })
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        scales: {
+          y: {
+            stacked: true,
+            ticks: { callback: function(v) { return fmtM(v); } },
+            grid: { color: 'rgba(0,0,0,0.05)' }
+          },
+          x: { stacked: true, grid: { display: false } }
+        },
+        plugins: {
+          tooltip: {
+            callbacks: { label: function(ctx) { return ctx.dataset.label + ': ' + fmtM(ctx.raw); } }
+          }
         }
+      }
+    });
 
-        /* ── 5. Benefits drivers ── */
-        function buildBenefits(d) {
-          const bd = d.benefitsDetail;
-          const colors = [C.gold, C.red, C.blue, C.teal, C.purple, C.grayLt];
-          const keys = Object.keys(bd).filter((k) => k !== 'years');
-          const datasets = keys.map((k, i) => ({
-            label: k,
-            data: bd[k],
-            backgroundColor: colors[i] + 'cc',
-            borderRadius: 2,
-          }));
-
-          new Chart(document.getElementById('chart-benefits'), {
-            type: 'bar',
-            data: { labels: bd.years, datasets },
-            options: {
-              responsive: true,
-              maintainAspectRatio: false,
-              interaction: { mode: 'index', intersect: false },
-              plugins: { tooltip: { callbacks: tooltipCb } },
-              scales: {
-                x: { stacked: true, grid: { display: false } },
-                y: {
-                  stacked: true,
-                  ticks: { callback: (v) => '$' + (v / 1e6).toFixed(0) + 'M' },
-                  grid: { color: '#e5e7eb' },
-                },
-              },
-            },
-          });
+    // 3. Expenditure breakdown (stacked bar, FY25-FY30 only)
+    var expCats = Object.keys(d.expendituresByCategory);
+    var expColors = [C.navy, C.blue, C.gold, C.red, C.teal, C.gray];
+    new Chart(document.getElementById('chart-expenditures'), {
+      type: 'bar',
+      data: {
+        labels: fy,
+        datasets: expCats.map(function(cat, idx) {
+          return {
+            label: cat,
+            data: d.expendituresByCategory[cat],
+            backgroundColor: expColors[idx] || C.gray
+          };
+        })
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        scales: {
+          y: {
+            stacked: true,
+            ticks: { callback: function(v) { return fmtM(v); } },
+            grid: { color: 'rgba(0,0,0,0.05)' }
+          },
+          x: { stacked: true, grid: { display: false } }
+        },
+        plugins: {
+          tooltip: {
+            callbacks: { label: function(ctx) { return ctx.dataset.label + ': ' + fmtM(ctx.raw); } }
+          }
         }
+      }
+    });
 
-        /* ── 6. Department trends ── */
-        function buildDepartments(d) {
-          const dd = d.departmentSpending;
-          const colors = [C.navy, C.red, C.green, C.gold, C.blue];
-          const keys = Object.keys(dd).filter((k) => k !== 'years');
+    // 4. Cumulative deficit (grouped bar)
+    new Chart(document.getElementById('chart-deficit'), {
+      type: 'bar',
+      data: {
+        labels: fy6,
+        datasets: [
+          {
+            label: 'School-side deficit',
+            data: d.cumulativeDeficit.school,
+            backgroundColor: C.navy
+          },
+          {
+            label: 'Town-side deficit',
+            data: d.cumulativeDeficit.town,
+            backgroundColor: C.blue
+          }
+        ]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        scales: {
+          y: {
+            stacked: true,
+            ticks: { callback: function(v) { return fmtM(v); } },
+            grid: { color: 'rgba(0,0,0,0.05)' }
+          },
+          x: { stacked: true, grid: { display: false } }
+        },
+        plugins: {
+          tooltip: {
+            callbacks: { label: function(ctx) { return ctx.dataset.label + ': ' + fmtM(ctx.raw); } }
+          }
+        }
+      }
+    });
 
-          /* Schools on a different scale — use dual axis */
-          const datasets = keys.map((k, i) => ({
-            label: k,
-            data: dd[k],
-            borderColor: colors[i],
+    // 5. Benefits drivers (line chart)
+    var benYears = d.benefitsDetail.years;
+    var benKeys = ['Pensions', 'Group Health', 'Retiree Health (OPEB)', 'Medicare', 'Workers Comp'];
+    var benColors = [C.navy, C.red, C.gold, C.teal, C.purple];
+    new Chart(document.getElementById('chart-benefits'), {
+      type: 'line',
+      data: {
+        labels: benYears,
+        datasets: benKeys.map(function(key, idx) {
+          return {
+            label: key,
+            data: d.benefitsDetail[key],
+            borderColor: benColors[idx],
             backgroundColor: 'transparent',
-            borderWidth: k === 'Schools' ? 3 : 2,
             tension: 0.3,
-            pointRadius: 4,
-            pointHoverRadius: 7,
-            yAxisID: k === 'Schools' ? 'y1' : 'y',
-          }));
-
-          new Chart(document.getElementById('chart-departments'), {
-            type: 'line',
-            data: { labels: dd.years, datasets },
-            options: {
-              responsive: true,
-              maintainAspectRatio: false,
-              interaction: { mode: 'index', intersect: false },
-              plugins: { tooltip: { callbacks: tooltipCb } },
-              scales: {
-                y: {
-                  type: 'linear',
-                  position: 'left',
-                  title: { display: true, text: 'Municipal Depts' },
-                  ticks: { callback: (v) => '$' + (v / 1e6).toFixed(0) + 'M' },
-                  grid: { color: '#e5e7eb' },
-                },
-                y1: {
-                  type: 'linear',
-                  position: 'right',
-                  title: { display: true, text: 'Schools' },
-                  ticks: { callback: (v) => '$' + (v / 1e6).toFixed(0) + 'M' },
-                  grid: { display: false },
-                },
-                x: { grid: { display: false } },
-              },
-            },
-          });
+            pointRadius: 4
+          };
+        })
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        scales: {
+          y: {
+            ticks: { callback: function(v) { return fmtM(v); } },
+            grid: { color: 'rgba(0,0,0,0.05)' }
+          },
+          x: { grid: { display: false } }
+        },
+        plugins: {
+          tooltip: {
+            callbacks: { label: function(ctx) { return ctx.dataset.label + ': ' + fmtM(ctx.raw); } }
+          }
         }
+      }
+    });
 
-        /* ── 7. Functional allocation donut ── */
-        function buildAllocation(d) {
-          const fa = d.functionalAllocation;
-          const labels = Object.keys(fa);
-          const values = Object.values(fa);
-          const colors = [
-            C.navy,
-            C.red,
-            C.blue,
-            C.green,
-            C.gold,
-            C.teal,
-            C.purple,
-            C.pink,
-            C.grayLt,
-            '#a3a3a3',
-          ];
-
-          new Chart(document.getElementById('chart-allocation'), {
-            type: 'doughnut',
-            data: {
-              labels,
-              datasets: [
-                {
-                  data: values,
-                  backgroundColor: colors.map((c) => c + 'dd'),
-                  borderColor: '#fff',
-                  borderWidth: 2,
-                  hoverOffset: 8,
-                },
-              ],
-            },
-            options: {
-              responsive: true,
-              maintainAspectRatio: false,
-              cutout: '45%',
-              plugins: {
-                legend: { position: 'right', labels: { padding: 14 } },
-                tooltip: {
-                  callbacks: {
-                    label: (ctx) => ctx.label + ': ' + ctx.parsed + '%',
-                  },
-                },
-              },
-            },
-          });
+    // 6. Growth rates (grouped bar)
+    new Chart(document.getElementById('chart-growth'), {
+      type: 'bar',
+      data: {
+        labels: d.revenueVsExpGrowth.years,
+        datasets: [
+          {
+            label: 'Revenue growth',
+            data: d.revenueVsExpGrowth.revenuePctChange,
+            backgroundColor: C.green
+          },
+          {
+            label: 'Expenditure growth',
+            data: d.revenueVsExpGrowth.expenditurePctChange,
+            backgroundColor: C.red
+          }
+        ]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        scales: {
+          y: {
+            ticks: { callback: function(v) { return v + '%'; } },
+            grid: { color: 'rgba(0,0,0,0.05)' }
+          },
+          x: { grid: { display: false } }
+        },
+        plugins: {
+          tooltip: {
+            callbacks: { label: function(ctx) { return ctx.dataset.label + ': ' + fmtPct(ctx.raw); } }
+          }
         }
+      }
+    });
 
-        /* ── 8. Salary step escalator ── */
-        function buildSalaryEscalator(d) {
-          const se = d.salaryStepEscalator;
-          /* Short labels for readability */
-          const labels = se.positions.map((p) =>
-            p.replace('Step ', 'S').replace(', ', '\n'),
-          );
-
-          new Chart(document.getElementById('chart-salary-escalator'), {
-            type: 'bar',
-            data: {
-              labels,
-              datasets: [
-                {
-                  label: 'Actual Raise',
-                  data: se.actualPctIncrease,
-                  backgroundColor: C.red + 'cc',
-                  borderRadius: 4,
-                },
-                {
-                  label: 'Area Inflation (3.2%)',
-                  data: se.positions.map(() => se.areaInflation),
-                  type: 'line',
-                  borderColor: C.gray,
-                  borderDash: [6, 4],
-                  borderWidth: 2,
-                  pointRadius: 0,
-                  fill: false,
-                },
-                {
-                  label: 'Nominal COLA (2.75%)',
-                  data: se.positions.map(() => se.nominalCOLA),
-                  type: 'line',
-                  borderColor: C.green,
-                  borderDash: [6, 4],
-                  borderWidth: 2,
-                  pointRadius: 0,
-                  fill: false,
-                },
-              ],
-            },
-            options: {
-              responsive: true,
-              maintainAspectRatio: false,
-              interaction: { mode: 'index', intersect: false },
-              plugins: {
-                tooltip: {
-                  callbacks: {
-                    label: (ctx) =>
-                      ctx.dataset.label + ': ' + ctx.parsed.y.toFixed(1) + '%',
-                    afterBody: (ctx) => {
-                      const idx = ctx[0].dataIndex;
-                      return (
-                        '\nFY25: $' +
-                        se.fy25Salary[idx].toLocaleString() +
-                        '\nFY26: $' +
-                        se.fy26Salary[idx].toLocaleString() +
-                        '\nRaise: $' +
-                        (
-                          se.fy26Salary[idx] - se.fy25Salary[idx]
-                        ).toLocaleString()
-                      );
-                    },
-                  },
-                },
-              },
-              scales: {
-                y: {
-                  title: { display: true, text: '% Increase' },
-                  ticks: { callback: (v) => v + '%' },
-                  grid: { color: '#e5e7eb' },
-                  min: 0,
-                  max: 10,
-                },
-                x: { grid: { display: false }, ticks: { font: { size: 11 } } },
-              },
-            },
-          });
+    // 7. FY25 Allocation (doughnut)
+    var allocLabels = Object.keys(d.functionalAllocation);
+    var allocValues = Object.values(d.functionalAllocation);
+    var allocColors = [C.navy, C.gold, C.red, C.blue, C.teal, C.purple, C.green, '#e67e22', '#95a5a6', '#34495e'];
+    new Chart(document.getElementById('chart-allocation'), {
+      type: 'doughnut',
+      data: {
+        labels: allocLabels,
+        datasets: [{
+          data: allocValues,
+          backgroundColor: allocColors.slice(0, allocLabels.length)
+        }]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: {
+          tooltip: {
+            callbacks: { label: function(ctx) { return ctx.label + ': ' + ctx.raw + '%'; } }
+          },
+          legend: {
+            position: 'right',
+            labels: { boxWidth: 14, padding: 12, font: { size: 12 } }
+          }
         }
-
-        /* ── 9. Enrollment vs cost per student ── */
-        function buildEnrollment(d) {
-          const en = d.enrollment;
-          const cps = d.costPerStudent;
-
-          new Chart(document.getElementById('chart-enrollment'), {
-            type: 'line',
-            data: {
-              labels: en.years,
-              datasets: [
-                {
-                  label: 'Total Enrollment (PreK-12)',
-                  data: en.totalPreK12,
-                  borderColor: C.navy,
-                  backgroundColor: C.navy + '18',
-                  borderWidth: 3,
-                  tension: 0.3,
-                  pointRadius: 3,
-                  yAxisID: 'y',
-                  segment: {
-                    borderDash: (ctx) => (ctx.p0DataIndex >= 5 ? [6, 4] : []),
-                  },
-                },
-                {
-                  label: 'Cost Per Student',
-                  data: [
-                    ...cps.costPerStudent,
-                    ...Array(en.years.length - cps.years.length).fill(null),
-                  ],
-                  borderColor: C.red,
-                  backgroundColor: C.red + '18',
-                  borderWidth: 3,
-                  tension: 0.3,
-                  pointRadius: 4,
-                  yAxisID: 'y1',
-                },
-              ],
-            },
-            options: {
-              responsive: true,
-              maintainAspectRatio: false,
-              interaction: { mode: 'index', intersect: false },
-              plugins: {
-                tooltip: {
-                  callbacks: {
-                    label: (ctx) => {
-                      if (ctx.parsed.y == null) return null;
-                      return ctx.datasetIndex === 0
-                        ? ctx.dataset.label +
-                            ': ' +
-                            ctx.parsed.y.toLocaleString() +
-                            ' students'
-                        : ctx.dataset.label +
-                            ': $' +
-                            ctx.parsed.y.toLocaleString();
-                    },
-                  },
-                },
-              },
-              scales: {
-                y: {
-                  type: 'linear',
-                  position: 'left',
-                  title: { display: true, text: 'Enrollment' },
-                  ticks: { callback: (v) => v.toLocaleString() },
-                  grid: { color: '#e5e7eb' },
-                },
-                y1: {
-                  type: 'linear',
-                  position: 'right',
-                  title: { display: true, text: 'Cost / Student' },
-                  ticks: { callback: (v) => '$' + (v / 1000).toFixed(0) + 'K' },
-                  grid: { display: false },
-                },
-                x: {
-                  grid: { display: false },
-                  ticks: { font: { size: 11 }, maxRotation: 45 },
-                },
-              },
-            },
-          });
-        }
-
-        /* ── 10. FTE changes horizontal bar ── */
-        function buildFTE(d) {
-          const fte = d.fteChanges;
-          const colors = fte.change.map((v) =>
-            v > 0 ? C.green + 'cc' : v < 0 ? C.red + 'cc' : C.gray + '66',
-          );
-
-          new Chart(document.getElementById('chart-fte'), {
-            type: 'bar',
-            data: {
-              labels: fte.departments,
-              datasets: [
-                {
-                  label: 'FTE Change',
-                  data: fte.change,
-                  backgroundColor: colors,
-                  borderRadius: 4,
-                },
-              ],
-            },
-            options: {
-              indexAxis: 'y',
-              responsive: true,
-              maintainAspectRatio: false,
-              plugins: {
-                legend: { display: false },
-                tooltip: {
-                  callbacks: {
-                    label: (ctx) => {
-                      const i = ctx.dataIndex;
-                      const v = ctx.parsed.x;
-                      return [
-                        (v >= 0 ? '+' : '') + v.toFixed(1) + ' FTEs',
-                        'FY2019: ' + fte.fy2019FTE[i].toFixed(1),
-                        'FY2026: ' + fte.fy2026FTE[i].toFixed(1),
-                      ];
-                    },
-                  },
-                },
-              },
-              scales: {
-                x: {
-                  title: {
-                    display: true,
-                    text: 'FTE Change (FY2019 → FY2026)',
-                  },
-                  grid: { color: '#e5e7eb' },
-                },
-                y: { grid: { display: false }, ticks: { font: { size: 12 } } },
-              },
-            },
-          });
-        }
-
-        /* ── 11. Growth drivers ── */
-        function buildGrowthDrivers(d) {
-          const gd = d.budgetGrowthDrivers;
-          const colors = [C.navy, C.red, C.gold, C.blue];
-
-          new Chart(document.getElementById('chart-growth-drivers'), {
-            type: 'bar',
-            data: {
-              labels: gd.categories,
-              datasets: [
-                {
-                  label: 'FY2019',
-                  data: gd.fy2019,
-                  backgroundColor: colors.map((c) => c + '55'),
-                  borderColor: colors,
-                  borderWidth: 2,
-                  borderRadius: 4,
-                },
-                {
-                  label: 'FY2026',
-                  data: gd.fy2026,
-                  backgroundColor: colors.map((c) => c + 'cc'),
-                  borderRadius: 4,
-                },
-              ],
-            },
-            options: {
-              responsive: true,
-              maintainAspectRatio: false,
-              interaction: { mode: 'index', intersect: false },
-              plugins: {
-                tooltip: {
-                  callbacks: {
-                    label: (ctx) =>
-                      ctx.dataset.label +
-                      ': $' +
-                      (ctx.parsed.y / 1e6).toFixed(1) +
-                      'M',
-                    afterBody: (ctx) => {
-                      if (ctx[0] && ctx.length >= 2) {
-                        const i = ctx[0].dataIndex;
-                        return (
-                          '\nAnnual growth: ' + gd.annualGrowthPct[i] + '%/yr'
-                        );
-                      }
-                    },
-                  },
-                },
-              },
-              scales: {
-                y: {
-                  ticks: { callback: (v) => '$' + (v / 1e6).toFixed(0) + 'M' },
-                  grid: { color: '#e5e7eb' },
-                },
-                x: { grid: { display: false } },
-              },
-            },
-          });
-        }
-
-        /* ── 12. SpEd non-resident ── */
-        function buildSpEd(d) {
-          const sp = d.spedNonResident;
-
-          /* Left chart: SpEd rates by group */
-          new Chart(document.getElementById('chart-sped-rates'), {
-            type: 'bar',
-            data: {
-              labels: ['Residents', 'Materials Fee', 'METCO'],
-              datasets: [
-                {
-                  label: 'SpEd Rate',
-                  data: [
-                    sp.residentSpedRate,
-                    sp.materialsFeeSpedRate,
-                    sp.metcoSpedRate,
-                  ],
-                  backgroundColor: [C.navy + 'cc', C.gold + 'cc', C.red + 'cc'],
-                  borderRadius: 6,
-                },
-              ],
-            },
-            options: {
-              responsive: true,
-              maintainAspectRatio: false,
-              plugins: {
-                legend: { display: false },
-                title: {
-                  display: true,
-                  text: 'SpEd Rate by Student Group',
-                  font: { family: "'Lora', serif", size: 14, weight: 700 },
-                  color: '#1b2a4a',
-                },
-                tooltip: {
-                  callbacks: {
-                    label: (ctx) => ctx.parsed.y + '% receive SpEd',
-                  },
-                },
-              },
-              scales: {
-                y: {
-                  ticks: { callback: (v) => v + '%' },
-                  grid: { color: '#e5e7eb' },
-                  max: 40,
-                },
-                x: { grid: { display: false } },
-              },
-            },
-          });
-
-          /* Right chart: Unreimbursed cost */
-          new Chart(document.getElementById('chart-sped-cost'), {
-            type: 'bar',
-            data: {
-              labels: ['Materials Fee\nStudents', 'METCO\nStudents'],
-              datasets: [
-                {
-                  label: 'Unreimbursed Cost',
-                  data: [sp.unreimbursedMaterialsFee, sp.unreimbursedMETCO],
-                  backgroundColor: [C.gold + 'cc', C.red + 'cc'],
-                  borderRadius: 6,
-                },
-              ],
-            },
-            options: {
-              responsive: true,
-              maintainAspectRatio: false,
-              plugins: {
-                legend: { display: false },
-                title: {
-                  display: true,
-                  text: 'Unreimbursed SpEd Cost / Year',
-                  font: { family: "'Lora', serif", size: 14, weight: 700 },
-                  color: '#1b2a4a',
-                },
-                tooltip: {
-                  callbacks: {
-                    label: (ctx) =>
-                      '$' + (ctx.parsed.y / 1e6).toFixed(1) + 'M unreimbursed',
-                  },
-                },
-              },
-              scales: {
-                y: {
-                  ticks: { callback: (v) => '$' + (v / 1e6).toFixed(1) + 'M' },
-                  grid: { color: '#e5e7eb' },
-                },
-                x: { grid: { display: false } },
-              },
-            },
-          });
-        }
-
-        /* ── 13. BEEP cost gap ── */
-        function buildBEEP(d) {
-          const bp = d.beepCostGap;
-
-          new Chart(document.getElementById('chart-beep'), {
-            type: 'bar',
-            data: {
-              labels: bp.years,
-              datasets: [
-                {
-                  label: 'Tuition Charged',
-                  data: bp.tuitionCharged,
-                  backgroundColor: C.green + 'cc',
-                  borderRadius: 4,
-                },
-                {
-                  label: 'Breakeven Cost',
-                  data: bp.breakEvenCost,
-                  backgroundColor: C.gold + 'cc',
-                  borderRadius: 4,
-                },
-                {
-                  label: 'True Cost (incl. overhead)',
-                  data: bp.years.map(() => bp.trueCostPerStudent),
-                  type: 'line',
-                  borderColor: C.red,
-                  borderWidth: 2,
-                  borderDash: [6, 4],
-                  pointRadius: 4,
-                  fill: false,
-                },
-              ],
-            },
-            options: {
-              responsive: true,
-              maintainAspectRatio: false,
-              interaction: { mode: 'index', intersect: false },
-              plugins: {
-                tooltip: {
-                  callbacks: {
-                    label: (ctx) =>
-                      ctx.dataset.label + ': $' + ctx.parsed.y.toLocaleString(),
-                    afterBody: (ctx) => {
-                      const i = ctx[0].dataIndex;
-                      const gap = bp.breakEvenCost[i] - bp.tuitionCharged[i];
-                      const pct = (
-                        (bp.tuitionCharged[i] / bp.breakEvenCost[i]) *
-                        100
-                      ).toFixed(0);
-                      return (
-                        '\nTuition covers ' +
-                        pct +
-                        '% of breakeven\nGap per student: $' +
-                        gap.toLocaleString()
-                      );
-                    },
-                  },
-                },
-              },
-              scales: {
-                y: {
-                  ticks: { callback: (v) => '$' + (v / 1000).toFixed(0) + 'K' },
-                  grid: { color: '#e5e7eb' },
-                  min: 0,
-                },
-                x: { grid: { display: false } },
-              },
-            },
-          });
-        }
-      })();
-    </script>
-  </body>
+      }
+    });
+  }
+})();
+</script>
+</body>
 </html>

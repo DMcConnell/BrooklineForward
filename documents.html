@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document Library - BrooklineForward</title>
+  <meta name="description" content="Key Brookline town documents with plain-language summaries, linked to official sources.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+
+<div id="bf-nav"></div>
+
+<div class="page-wrap">
+  <div class="page-header">
+    <h1>Document Library</h1>
+    <p>Key town documents with plain-language summaries. Everything links to the official source on the Town of Brookline's site.</p>
+  </div>
+
+  <div class="doc-controls">
+    <input type="text" class="doc-search" id="doc-search" placeholder="Search documents...">
+    <div class="doc-filters" id="doc-filters"></div>
+  </div>
+
+  <p class="doc-count" id="doc-count"></p>
+  <div class="doc-grid" id="doc-grid">
+    <div class="empty-state"><p>Loading documents...</p></div>
+  </div>
+</div>
+
+<div id="bf-footer"></div>
+<script src="assets/nav.js"></script>
+<script>
+(function() {
+  var allDocs = [];
+  var activeType = 'all';
+  var searchQuery = '';
+
+  var typeLabels = {
+    'budget': 'Budget',
+    'financial-plan': 'Financial Plan',
+    'committee-report': 'Committee Report',
+    'meeting-minutes': 'Meeting Minutes',
+    'warrant-article': 'Warrant Article',
+    'audit': 'Audit',
+    'presentation': 'Presentation'
+  };
+
+  function formatDate(dateStr) {
+    var d = new Date(dateStr + 'T00:00:00');
+    return d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+  }
+
+  function badgeClass(type) {
+    return 'badge-' + type;
+  }
+
+  function matchesSearch(doc, query) {
+    if (!query) return true;
+    var tokens = query.toLowerCase().split(/\s+/);
+    var haystack = (doc.title + ' ' + doc.summary + ' ' + (doc.tags || []).join(' ') + ' ' + (doc.keyTopics || []).join(' ')).toLowerCase();
+    return tokens.every(function(t) { return haystack.indexOf(t) !== -1; });
+  }
+
+  function render() {
+    var filtered = allDocs.filter(function(doc) {
+      var typeMatch = activeType === 'all' || doc.type === activeType;
+      var searchMatch = matchesSearch(doc, searchQuery);
+      return typeMatch && searchMatch;
+    });
+
+    var countEl = document.getElementById('doc-count');
+    countEl.textContent = filtered.length + ' document' + (filtered.length !== 1 ? 's' : '');
+
+    var grid = document.getElementById('doc-grid');
+    if (filtered.length === 0) {
+      grid.innerHTML = '<div class="empty-state"><p>No documents match your search.</p></div>';
+      return;
+    }
+
+    grid.innerHTML = filtered.map(function(doc) {
+      var topics = (doc.keyTopics || []).map(function(t) {
+        return '<span class="topic-tag">' + t + '</span>';
+      }).join('');
+
+      var links = '<a href="' + doc.sourceUrl + '" target="_blank" rel="noopener">View on Town site ↗</a>';
+      if (doc.localPath) {
+        links += '<a href="' + doc.localPath + '" class="secondary-link" target="_blank">Local backup</a>';
+      }
+
+      return '<div class="doc-card">' +
+        '<div class="doc-card-header">' +
+          '<div class="doc-card-title">' + doc.title + '</div>' +
+          '<span class="doc-type-badge ' + badgeClass(doc.type) + '">' + (typeLabels[doc.type] || doc.type) + '</span>' +
+        '</div>' +
+        '<div class="doc-card-meta">' + doc.source + ' · ' + formatDate(doc.date) + (doc.pageCount ? ' · ' + doc.pageCount + ' pages' : '') + '</div>' +
+        '<div class="doc-card-summary">' + doc.summary + '</div>' +
+        (topics ? '<div class="doc-card-topics">' + topics + '</div>' : '') +
+        '<div class="doc-card-links">' + links + '</div>' +
+      '</div>';
+    }).join('');
+  }
+
+  function buildFilters() {
+    var types = {};
+    allDocs.forEach(function(doc) { types[doc.type] = true; });
+    var typeList = Object.keys(types).sort();
+
+    var filtersEl = document.getElementById('doc-filters');
+    var allBtn = document.createElement('button');
+    allBtn.className = 'filter-btn active';
+    allBtn.textContent = 'All';
+    allBtn.addEventListener('click', function() {
+      activeType = 'all';
+      document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
+      allBtn.classList.add('active');
+      render();
+    });
+    filtersEl.appendChild(allBtn);
+
+    typeList.forEach(function(type) {
+      var btn = document.createElement('button');
+      btn.className = 'filter-btn';
+      btn.textContent = typeLabels[type] || type;
+      btn.addEventListener('click', function() {
+        activeType = type;
+        document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        render();
+      });
+      filtersEl.appendChild(btn);
+    });
+  }
+
+  // Search
+  document.getElementById('doc-search').addEventListener('input', function(e) {
+    searchQuery = e.target.value;
+    render();
+  });
+
+  // Load data
+  fetch('data/documents.json')
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      allDocs = data.documents.sort(function(a, b) {
+        return new Date(b.date) - new Date(a.date);
+      });
+      buildFilters();
+      render();
+    })
+    .catch(function() {
+      document.getElementById('doc-grid').innerHTML = '<div class="empty-state"><p>Could not load document data.</p></div>';
+    });
+})();
+</script>
+</body>
+</html>

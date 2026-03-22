@@ -1,59 +1,37 @@
-/* BrooklineForward — shared navigation injector
-   Add <div id="bf-nav"></div> at top of <body> to inject nav.
-   Add <div id="bf-footer"></div> before </body> to inject footer. */
+/* BrooklineForward - shared navigation */
 
 (function() {
-  const NAV_HTML = `
-<nav>
-  <a href="index.html" class="nav-brand"><span>B</span>rooklineForward</a>
-  <ul class="nav-links">
-    <li><a href="understanding.html">The Challenge</a></li>
-    <li><a href="proposal.html">The Proposal</a></li>
-    <li><a href="research.html">Research</a></li>
-    <li><a href="budget.html">Budget Explorer</a></li>
-<li><a href="https://github.com/dmcconnell/BrooklineForward" target="_blank" rel="noopener">GitHub ↗</a></li>
-  </ul>
-</nav>`;
+  var pages = [
+    { href: 'budget.html', label: 'Budget' },
+    { href: 'documents.html', label: 'Documents' },
+    { href: 'about.html', label: 'About' }
+  ];
 
-  const FOOTER_HTML = `
-<footer>
-  <div class="footer-inner">
-    <div class="footer-brand">BrooklineForward</div>
-    <p>
-      An independent citizen research project. Not affiliated with the Town of Brookline,
-      any political campaign, or any advocacy organization.<br />
-      All research published openly at
-      <a href="https://github.com/dmcconnell/BrooklineForward" target="_blank">github.com/dmcconnell/BrooklineForward</a>.
-      Questions and contributions welcome.<br />
-      Started March 2026.
-    </p>
-  </div>
-</footer>`;
+  var current = location.pathname.split('/').pop() || 'index.html';
 
-  function inject(id, html) {
-    const el = document.getElementById(id);
-    if (el) el.outerHTML = html;
+  // Nav
+  var nav = document.getElementById('bf-nav');
+  if (nav) {
+    var links = pages.map(function(p) {
+      var cls = p.href === current ? ' class="active"' : '';
+      return '<a href="' + p.href + '"' + cls + '>' + p.label + '</a>';
+    }).join('');
+
+    nav.innerHTML =
+      '<nav class="site-nav"><div class="site-nav-inner">' +
+        '<a href="index.html" class="site-nav-brand">BrooklineForward</a>' +
+        '<div class="site-nav-links">' + links + '</div>' +
+      '</div></nav>';
   }
 
-  function setActiveNav() {
-    const path = window.location.pathname.split('/').pop() || 'index.html';
-    document.querySelectorAll('.nav-links a').forEach(a => {
-      const href = a.getAttribute('href');
-      if (href && !href.startsWith('http') && !href.includes('#')) {
-        if (href === path) a.classList.add('active');
-      }
-    });
-  }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', function() {
-      inject('bf-nav', NAV_HTML);
-      inject('bf-footer', FOOTER_HTML);
-      setActiveNav();
-    });
-  } else {
-    inject('bf-nav', NAV_HTML);
-    inject('bf-footer', FOOTER_HTML);
-    setActiveNav();
+  // Footer
+  var footer = document.getElementById('bf-footer');
+  if (footer) {
+    footer.innerHTML =
+      '<footer class="site-footer">' +
+        'BrooklineForward is an independent project by Brookline residents. ' +
+        'All data comes from publicly available Town of Brookline sources.<br>' +
+        '<a href="https://github.com/dmcconnell/BrooklineForward" target="_blank" rel="noopener">View source on GitHub</a>' +
+      '</footer>';
   }
 })();

@@ -1,0 +1,94 @@
+{
+  "documents": [
+    {
+      "id": "ersc-final-report-2026",
+      "title": "Expenditures & Revenues Study Committee Final Report",
+      "shortTitle": "ERSC Final Report",
+      "date": "2026-03-13",
+      "year": 2026,
+      "type": "committee-report",
+      "source": "Town of Brookline",
+      "sourceUrl": "https://brookline.news/wp-content/uploads/2026/03/ERSC-Final-Report-FINAL-031326-1.pdf",
+      "localPath": "docs/reports/2026-03-ERSC-final-report.pdf",
+      "pageCount": 162,
+      "summary": "A year-long independent review of Brookline's revenue and spending trends. The committee looked at what's driving the gap between the town's revenue growth (around 3% per year under Prop 2.5) and its cost growth (5-8% in areas like healthcare and debt service). Includes a three-tier override proposal and nine structural reform recommendations for the Schools.",
+      "keyTopics": [
+        "Revenue vs. expense growth gap",
+        "Three-tier override proposal ($18M / $20.5M / $23M)",
+        "Nine structural reform conditions for Schools",
+        "Healthcare cost drivers",
+        "Special education spending on non-resident students",
+        "BEEP program cost recovery",
+        "Pension and OPEB trajectory"
+      ],
+      "tags": ["budget", "structural deficit", "override", "healthcare", "pension", "OPEB", "special education", "BEEP", "enrollment"],
+      "relatedDocuments": ["fy2025-budget", "fy2026-fy2030-lrfp"],
+      "addedDate": "2026-03-22"
+    },
+    {
+      "id": "fy2025-budget",
+      "title": "Town of Brookline FY2025 Budget",
+      "shortTitle": "FY2025 Budget",
+      "date": "2025-06-01",
+      "year": 2025,
+      "type": "budget",
+      "source": "Town of Brookline",
+      "sourceUrl": "https://www.brooklinema.gov/Archive.aspx?AMID=37",
+      "localPath": "docs/budgets/2025-FY2025-budget.pdf",
+      "pageCount": null,
+      "summary": "The adopted operating budget for fiscal year 2025. Covers all town and school department appropriations, revenue projections, and staffing levels. Total budget of roughly $400M, with education making up about 59% of spending.",
+      "keyTopics": [
+        "Department-by-department appropriations",
+        "Revenue projections by source",
+        "Staffing and FTE counts",
+        "Capital improvement plan"
+      ],
+      "tags": ["budget", "appropriations", "revenue", "staffing"],
+      "relatedDocuments": ["ersc-final-report-2026", "fy2026-fy2030-lrfp"],
+      "addedDate": "2026-03-22"
+    },
+    {
+      "id": "fy2026-fy2030-lrfp",
+      "title": "FY2026-FY2030 Long Range Financial Plan",
+      "shortTitle": "5-Year Financial Plan",
+      "date": "2024-12-01",
+      "year": 2024,
+      "type": "financial-plan",
+      "source": "Town of Brookline",
+      "sourceUrl": "https://www.brooklinema.gov/Archive.aspx?AMID=37",
+      "localPath": "docs/budgets/2024-12-FY2026-FY2030-LRFP.pdf",
+      "pageCount": null,
+      "summary": "Five-year financial projections for the town, covering FY2026 through FY2030. Shows how revenue and expenses are expected to grow under current policies, and where the gaps are likely to appear. This is the main source for the projected deficit figures that the ERSC report builds on.",
+      "keyTopics": [
+        "Five-year revenue projections",
+        "Five-year expenditure projections",
+        "Projected structural deficit by fiscal year",
+        "Assumptions about growth rates"
+      ],
+      "tags": ["financial plan", "projections", "deficit", "long-range"],
+      "relatedDocuments": ["fy2025-budget", "ersc-final-report-2026"],
+      "addedDate": "2026-03-22"
+    },
+    {
+      "id": "fy2026-article-9",
+      "title": "Article 9: FY2026 Budget (Advisory Committee Recommendation)",
+      "shortTitle": "FY2026 Article 9",
+      "date": "2025-05-01",
+      "year": 2025,
+      "type": "budget",
+      "source": "Town of Brookline Advisory Committee",
+      "sourceUrl": "https://www.brooklinema.gov/Archive.aspx?AMID=37",
+      "localPath": "docs/budgets/2025-article-9-advisory-committee.pdf",
+      "pageCount": null,
+      "summary": "The Advisory Committee's recommendation and vote on the FY2026 operating budget (Article 9 of Town Meeting). This is the formal warrant article that Town Meeting voted on to adopt the FY2026 budget.",
+      "keyTopics": [
+        "FY2026 adopted budget figures",
+        "Advisory Committee recommendation",
+        "Town Meeting warrant article"
+      ],
+      "tags": ["budget", "town meeting", "advisory committee", "FY2026"],
+      "relatedDocuments": ["fy2025-budget", "fy2026-fy2030-lrfp"],
+      "addedDate": "2026-03-22"
+    }
+  ]
+}
