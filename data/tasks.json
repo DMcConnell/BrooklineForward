@@ -1,0 +1,87 @@
+{
+  "lastUpdated": "March 2026",
+  "branches": [
+    {
+      "id": "B1",
+      "slug": "branch-1",
+      "name": "Economic Development",
+      "color": "b1",
+      "tasks": [
+        { "id":"b1-1",  "workstream":"Site inventory",      "task":"Pull Brookline commercial parcel data from Assessor's Office",               "status":"To Do", "priority":"High",   "notes":"brooklinema.gov/assessor",                           "output":"Commercial parcel spreadsheet" },
+        { "id":"b1-2",  "workstream":"Site inventory",      "task":"Apply RKG Fiscal Impact Model to top 10 development sites",                   "status":"To Do", "priority":"High",   "notes":"Need RKG model access from Planning Dept",           "output":"Revenue per site estimates" },
+        { "id":"b1-3",  "workstream":"Site inventory",      "task":"Build prioritized 10-year development pipeline with timeline estimates",      "status":"To Do", "priority":"Medium", "notes":"",                                                   "output":"Pipeline doc" },
+        { "id":"b1-4",  "workstream":"Zoning reform",       "task":"Map current FAR and height limits for top commercial corridors (Beacon St, Harvard St, Rt 9)", "status":"To Do", "priority":"High", "notes":"Zoning By-Law + GIS maps", "output":"Zoning gap analysis" },
+        { "id":"b1-5",  "workstream":"Zoning reform",       "task":"Research Cambridge/Somerville as-of-right zoning models and revenue outcomes","status":"To Do", "priority":"Medium", "notes":"Web research + DLS snapshots",                       "output":"Comparable zoning memo" },
+        { "id":"b1-6",  "workstream":"Zoning reform",       "task":"Draft specific zoning changes needed to unlock top 5 stalled sites",          "status":"To Do", "priority":"Medium", "notes":"",                                                   "output":"Zoning reform proposal" },
+        { "id":"b1-7",  "workstream":"PILOT program",       "task":"Obtain full list of tax-exempt properties from Assessor",                     "status":"To Do", "priority":"High",   "notes":"brooklinema.gov/assessor",                           "output":"Non-profit property list" },
+        { "id":"b1-8",  "workstream":"PILOT program",       "task":"Estimate value of non-exempt use properties for top 20 non-profit holders",   "status":"To Do", "priority":"Medium", "notes":"",                                                   "output":"PILOT revenue estimate" },
+        { "id":"b1-9",  "workstream":"PILOT program",       "task":"Research existing Brookline PILOT agreements (e.g. 2 Brookline Place)",       "status":"To Do", "priority":"Medium", "notes":"Town Counsel / Assessor records",                    "output":"PILOT precedent memo" },
+        { "id":"b1-10", "workstream":"PILOT program",       "task":"Design structured PILOT program with incentives and consequences",             "status":"To Do", "priority":"Low",    "notes":"",                                                   "output":"Draft PILOT policy" },
+        { "id":"b1-11", "workstream":"Asset monetization",  "task":"Audit municipal parking lots: capacity, current revenue, lease potential",     "status":"To Do", "priority":"Medium", "notes":"DPW + Parking Dept data",                            "output":"Parking revenue analysis" },
+        { "id":"b1-12", "workstream":"Asset monetization",  "task":"Research golf course revenue vs. comparable municipal courses",               "status":"To Do", "priority":"Low",    "notes":"Recreation Dept financials",                         "output":"Golf course memo" },
+        { "id":"b1-13", "workstream":"Asset monetization",  "task":"Map school building off-hours capacity and current rental rates vs. market",   "status":"To Do", "priority":"Medium", "notes":"PSB facilities data + E&RSC appendix",               "output":"Facilities rental gap analysis" },
+        { "id":"b1-14", "workstream":"OOD SpEd expansion",  "task":"Quantify current OOD SpEd program capacity and waitlist demand",              "status":"To Do", "priority":"High",   "notes":"PSB FY27 budget + DESE tuition tables",              "output":"OOD capacity memo" },
+        { "id":"b1-15", "workstream":"OOD SpEd expansion",  "task":"Model revenue from expanding Winthrop House, ALC, LAHB to external students", "status":"To Do", "priority":"High",   "notes":"PSB FY27 budget (published Feb 5, 2026)",            "output":"OOD revenue model" },
+        { "id":"b1-16", "workstream":"Governance",          "task":"Draft proposed org structure: Select Board econ dev lead + elevated planning division", "status":"To Do", "priority":"Medium", "notes":"E&RSC recommendations as baseline", "output":"Governance proposal" }
+      ]
+    },
+    {
+      "id": "B2",
+      "slug": "branch-2",
+      "name": "State & Legislative Options",
+      "color": "b2",
+      "tasks": [
+        { "id":"b2-1",  "workstream":"METCO SpEd costs",    "task":"Pull DESE SY24 in-district SpEd per-pupil cost data for Brookline",           "status":"To Do", "priority":"High",   "notes":"dese.mass.edu — public data",                        "output":"SpEd cost baseline" },
+        { "id":"b2-2",  "workstream":"METCO SpEd costs",    "task":"Quantify non-resident SpEd enrollment breakdown (METCO vs Materials Fee)",     "status":"To Do", "priority":"High",   "notes":"PSB enrollment data — partial in E&RSC appendix",    "output":"Non-resident SpEd enrollment table" },
+        { "id":"b2-3",  "workstream":"METCO SpEd costs",    "task":"Calculate total annual unreimbursed SpEd cost with confidence interval",       "status":"To Do", "priority":"High",   "notes":"",                                                   "output":"Core financial claim" },
+        { "id":"b2-4",  "workstream":"Coalition mapping",   "task":"Research METCO enrollment at Newton, Wellesley, Lexington + their SpEd burden","status":"To Do", "priority":"High",   "notes":"DESE public data + district annual reports",         "output":"Coalition data brief" },
+        { "id":"b2-5",  "workstream":"Coalition mapping",   "task":"Identify CFO/Superintendent contacts at Newton, Wellesley, Lexington",         "status":"To Do", "priority":"Medium", "notes":"District websites",                                  "output":"Contact list" },
+        { "id":"b2-6",  "workstream":"Coalition mapping",   "task":"Estimate total statewide unreimbursed METCO SpEd cost across all receiving districts", "status":"To Do", "priority":"Medium", "notes":"DESE METCO program data",               "output":"Statewide impact figure" },
+        { "id":"b2-7",  "workstream":"Legislative strategy","task":"Identify Brookline's current State House delegation (Rep + Senator)",          "status":"To Do", "priority":"High",   "notes":"malegislature.gov",                                  "output":"Delegation contact sheet" },
+        { "id":"b2-8",  "workstream":"Legislative strategy","task":"Search for existing bills on METCO reimbursement, Prop 2½, Ch. 70 reform",    "status":"To Do", "priority":"High",   "notes":"malegislature.gov + MMA legislative tracker",        "output":"Existing bills memo" },
+        { "id":"b2-9",  "workstream":"Legislative strategy","task":"Determine best legislative vehicle: Ed Reform amendment vs. budget line item vs. Home Rule", "status":"To Do", "priority":"Medium", "notes":"Town Counsel consultation recommended", "output":"Legislative pathway recommendation" },
+        { "id":"b2-10", "workstream":"Chapter 70 reform",  "task":"Analyze Brookline's Chapter 70 aid vs. foundation budget — is Brookline underfunded?", "status":"To Do", "priority":"Medium", "notes":"DESE Foundation Budget data (public)",         "output":"Ch. 70 gap analysis" },
+        { "id":"b2-11", "workstream":"Chapter 70 reform",  "task":"Research MMA's Chapter 70 reform proposals and Brookline's historical position","status":"To Do", "priority":"Low",    "notes":"mma.org research + MMA 'Weathering the Storm' report","output":"Ch. 70 reform memo" },
+        { "id":"b2-12", "workstream":"New revenue tools",  "task":"Research MA transfer tax legislation status (Boston/Cambridge precedent)",      "status":"To Do", "priority":"Medium", "notes":"malegislature.gov + Boston City Council records",    "output":"Transfer tax memo" },
+        { "id":"b2-13", "workstream":"New revenue tools",  "task":"Inventory Home Rule petition options available to Brookline for new revenue tools","status":"To Do","priority":"Low",  "notes":"MA GL Home Rule authority + Town Counsel",           "output":"Home Rule options list" }
+      ]
+    },
+    {
+      "id": "B3",
+      "slug": "branch-3",
+      "name": "The 2030 Financial Transition",
+      "color": "b3",
+      "tasks": [
+        { "id":"b3-1",  "workstream":"OPEB liability",      "task":"Extract key figures from GASB 74/75 actuarial report (in E&RSC appendix)",    "status":"To Do", "priority":"High",   "notes":"Already in E&RSC appendix — June 30, 2024 data",     "output":"OPEB liability baseline" },
+        { "id":"b3-2",  "workstream":"OPEB liability",      "task":"Determine current annual required contribution (ARC) and unfunded liability total","status":"To Do","priority":"High","notes":"GASB 74/75 report + MA PERAC data",               "output":"OPEB funding requirement" },
+        { "id":"b3-3",  "workstream":"OPEB liability",      "task":"Project OPEB liability growth at current trajectory through FY35",             "status":"To Do", "priority":"Medium", "notes":"Actuarial growth rate assumptions",                  "output":"OPEB projection model" },
+        { "id":"b3-4",  "workstream":"$40M scenarios",      "task":"Build Scenario A model: all $40M to OPEB starting FY31",                      "status":"To Do", "priority":"High",   "notes":"E&RSC Long-Range Financial Plan as baseline",        "output":"Scenario A model" },
+        { "id":"b3-5",  "workstream":"$40M scenarios",      "task":"Build Scenario B model: $25M OPEB / $15M structural relief split",             "status":"To Do", "priority":"High",   "notes":"",                                                   "output":"Scenario B model" },
+        { "id":"b3-6",  "workstream":"$40M scenarios",      "task":"Build Scenario C model: dynamic allocation tied to deficit + econ dev revenue", "status":"To Do", "priority":"Medium", "notes":"",                                                  "output":"Scenario C model" },
+        { "id":"b3-7",  "workstream":"$40M scenarios",      "task":"Build Scenario D model: healthcare reform first, then OPEB pivot",             "status":"To Do", "priority":"Medium", "notes":"",                                                   "output":"Scenario D model" },
+        { "id":"b3-8",  "workstream":"Moody's sensitivity", "task":"Map which Moody's scoring factors OPEB funding affects",                       "status":"To Do", "priority":"High",   "notes":"Moody's scorecard in E&RSC appendix",                "output":"Moody's factor map" },
+        { "id":"b3-9",  "workstream":"Moody's sensitivity", "task":"Model rating impact under Scenarios A-D — identify downgrade threshold",       "status":"To Do", "priority":"High",   "notes":"Requires financial advisor input ideally",           "output":"Rating sensitivity analysis" },
+        { "id":"b3-10", "workstream":"Healthcare reform",   "task":"Pull MA Group Insurance Commission (GIC) current rate schedules",              "status":"To Do", "priority":"High",   "notes":"mass.gov/gic — public",                              "output":"GIC rate comparison" },
+        { "id":"b3-11", "workstream":"Healthcare reform",   "task":"Model annual savings from reducing employer premium share: 83% → 76% → GIC",   "status":"To Do", "priority":"High",   "notes":"E&RSC comparable community data + GIC rates",        "output":"Healthcare savings model" },
+        { "id":"b3-12", "workstream":"Healthcare reform",   "task":"Research collective bargaining constraints on changing premium contribution rate","status":"To Do","priority":"Medium","notes":"Brookline union contracts + MA GL c.32B",             "output":"CBA constraints memo" },
+        { "id":"b3-13", "workstream":"Comparables",         "task":"Research how Newton, Wellesley, Lexington have planned for pension-to-OPEB transition","status":"To Do","priority":"Medium","notes":"Comparable city annual reports + MA PERAC",     "output":"Comparable OPEB strategies" },
+        { "id":"b3-14", "workstream":"Deficit projection",  "task":"Project operating deficit FY27–FY35 under 3 scenarios (no reform / conservative / optimistic)","status":"To Do","priority":"Low","notes":"E&RSC Long-Range Plan + branch research outputs","output":"Integrated deficit model" }
+      ]
+    },
+    {
+      "id": "SYN",
+      "slug": null,
+      "name": "Synthesis & Final Proposal",
+      "color": "syn",
+      "tasks": [
+        { "id":"syn-1", "workstream":"Proposal draft",      "task":"Draft Branch 1 section with data-backed recommendations and impact estimates", "status":"To Do", "priority":"Medium", "notes":"",                           "output":"Branch 1 draft" },
+        { "id":"syn-2", "workstream":"Proposal draft",      "task":"Draft Branch 2 section with legislative pathway and coalition strategy",       "status":"To Do", "priority":"Medium", "notes":"",                           "output":"Branch 2 draft" },
+        { "id":"syn-3", "workstream":"Proposal draft",      "task":"Draft Branch 3 section with scenario analysis and policy recommendation",      "status":"To Do", "priority":"Medium", "notes":"",                           "output":"Branch 3 draft" },
+        { "id":"syn-4", "workstream":"Proposal draft",      "task":"Write integrated proposal narrative connecting all three branches",            "status":"To Do", "priority":"Low",    "notes":"",                           "output":"Full proposal draft" },
+        { "id":"syn-5", "workstream":"Proposal draft",      "task":"Build combined impact model showing phased deficit reduction FY27–FY35",       "status":"To Do", "priority":"Low",    "notes":"",                           "output":"Master financial model" },
+        { "id":"syn-6", "workstream":"Delivery",            "task":"Identify target audience and presentation format (Select Board / Town Meeting / public)", "status":"To Do", "priority":"Low", "notes":"",              "output":"Delivery strategy" },
+        { "id":"syn-7", "workstream":"Delivery",            "task":"Prepare executive summary (1-2 pages) for non-technical audience",            "status":"To Do", "priority":"Low",    "notes":"",                           "output":"Executive summary" }
+      ]
+    }
+  ]
+}
